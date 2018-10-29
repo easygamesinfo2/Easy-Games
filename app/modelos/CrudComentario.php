@@ -24,7 +24,7 @@ class CrudComentario
         $listaComentarios = [];
 
         foreach ($comentarios as $comentario) {
-            $listaComentarios[] = new Comentario($comentario['nome_comentario'], $comentario['descricao_comentario'],$comentario['cod_comentario']);
+            $listaComentarios[] = new Comentario($comentario['descricao_comentario'],$comentario['cod_comentario']);
         }
 
 
@@ -32,7 +32,7 @@ class CrudComentario
 
     }
 
-    public function getComentario( int $id)
+    public function getComentario(int $id)
     {
         $this->conexao = DBConnection::getConexao();
         $sql = "select * from comentario WHERE cod_comentario = $id";
@@ -49,7 +49,7 @@ class CrudComentario
         $this->conexao = DBConnection::getConexao();
         $dados[] = $com->getDescricao();
         $dados[] = $com->getId();
-        $this->conexao->exec("insert into comentario(descricao_comentario) VALUES('$dados[1]')");
+        $this->conexao->exec("insert into comentario(descricao_avaliacao) VALUES('$dados[0]'");
 
     }
     public function atualizaComentario(Comentario  $com,int $id){
