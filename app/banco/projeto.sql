@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
--- https://www.phpmyadmin.net/
+-- version 4.5.4.1deb2ubuntu2
+-- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: 22-Out-2018 às 19:14
--- Versão do servidor: 10.1.34-MariaDB
--- PHP Version: 7.2.7
+-- Host: localhost
+-- Tempo de geração: 29/10/2018 às 11:36
+-- Versão do servidor: 5.7.21-0ubuntu0.16.04.1
+-- Versão do PHP: 7.0.22-0ubuntu0.16.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -19,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `projeto`
+-- Banco de dados: `projeto`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `avaliacao`
+-- Estrutura para tabela `avaliacao`
 --
 
 CREATE TABLE `avaliacao` (
@@ -38,7 +36,7 @@ CREATE TABLE `avaliacao` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `cadastrar`
+-- Estrutura para tabela `cadastrar`
 --
 
 CREATE TABLE `cadastrar` (
@@ -50,7 +48,19 @@ CREATE TABLE `cadastrar` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `noticia`
+-- Estrutura para tabela `comentario`
+--
+
+CREATE TABLE `comentario` (
+  `cod_comentario` int(11) NOT NULL,
+  `descricao_comentario` text CHARACTER SET utf8,
+  `data_comentario` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `noticia`
 --
 
 CREATE TABLE `noticia` (
@@ -63,7 +73,7 @@ CREATE TABLE `noticia` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `noticia`
+-- Fazendo dump de dados para tabela `noticia`
 --
 
 INSERT INTO `noticia` (`cod_noticia`, `data_noticia`, `status`, `titulo_noticia`, `qtd`, `descricao_noticia`) VALUES
@@ -72,7 +82,7 @@ INSERT INTO `noticia` (`cod_noticia`, `data_noticia`, `status`, `titulo_noticia`
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `usuario`
+-- Estrutura para tabela `usuario`
 --
 
 CREATE TABLE `usuario` (
@@ -84,17 +94,17 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Indexes for dumped tables
+-- Índices de tabelas apagadas
 --
 
 --
--- Indexes for table `avaliacao`
+-- Índices de tabela `avaliacao`
 --
 ALTER TABLE `avaliacao`
   ADD PRIMARY KEY (`cod_avaliacao`);
 
 --
--- Indexes for table `cadastrar`
+-- Índices de tabela `cadastrar`
 --
 ALTER TABLE `cadastrar`
   ADD KEY `cod_usuario` (`cod_usuario`),
@@ -102,51 +112,58 @@ ALTER TABLE `cadastrar`
   ADD KEY `cod_avaliacao` (`cod_avaliacao`);
 
 --
--- Indexes for table `noticia`
+-- Índices de tabela `comentario`
+--
+ALTER TABLE `comentario`
+  ADD PRIMARY KEY (`cod_comentario`);
+
+--
+-- Índices de tabela `noticia`
 --
 ALTER TABLE `noticia`
   ADD PRIMARY KEY (`cod_noticia`);
 
 --
--- Indexes for table `usuario`
+-- Índices de tabela `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`cod_usuario`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de tabelas apagadas
 --
 
 --
--- AUTO_INCREMENT for table `avaliacao`
+-- AUTO_INCREMENT de tabela `avaliacao`
 --
 ALTER TABLE `avaliacao`
   MODIFY `cod_avaliacao` int(11) NOT NULL AUTO_INCREMENT;
-
 --
--- AUTO_INCREMENT for table `noticia`
+-- AUTO_INCREMENT de tabela `comentario`
+--
+ALTER TABLE `comentario`
+  MODIFY `cod_comentario` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de tabela `noticia`
 --
 ALTER TABLE `noticia`
   MODIFY `cod_noticia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
-
 --
--- AUTO_INCREMENT for table `usuario`
+-- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
   MODIFY `cod_usuario` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- Restrições para dumps de tabelas
+--
 
 --
--- Constraints for dumped tables
---
-
---
--- Limitadores para a tabela `cadastrar`
+-- Restrições para tabelas `cadastrar`
 --
 ALTER TABLE `cadastrar`
   ADD CONSTRAINT `cadastrar_ibfk_1` FOREIGN KEY (`cod_usuario`) REFERENCES `usuario` (`cod_usuario`),
   ADD CONSTRAINT `cadastrar_ibfk_2` FOREIGN KEY (`cod_noticia`) REFERENCES `noticia` (`cod_noticia`),
   ADD CONSTRAINT `cadastrar_ibfk_3` FOREIGN KEY (`cod_avaliacao`) REFERENCES `avaliacao` (`cod_avaliacao`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
