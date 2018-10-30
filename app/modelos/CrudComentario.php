@@ -47,15 +47,13 @@ class CrudComentario
     }
     public function insertComentario(Comentario $com){
         $this->conexao = DBConnection::getConexao();
-        $dados[] = $com->getDescricao();
-        $dados[] = $com->getId();
-        $this->conexao->exec("insert into comentario(descricao_avaliacao) VALUES('$dados[0]'");
+        $sql = "insert into comentario(descricao_avaliacao) VALUES('".$com->getDescricao()."'";
+        $this->conexao->exec($sql);
 
     }
     public function atualizaComentario(Comentario  $com,int $id){
         $this->conexao = DBConnection::getConexao();
-        $dados[] = $com->getDescricao();
-        $sql = "UPDATE comentario SET descricao_comentario = '$dados[0]'WHERE cod_comentario = $id";
+        $sql = "UPDATE comentario SET descricao_comentario = '".$com->getDescricao()."' WHERE cod_comentario = $id";
         $this->conexao->exec($sql);
     }
     public function excluirComentario( int $com){

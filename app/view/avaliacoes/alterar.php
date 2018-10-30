@@ -1,3 +1,4 @@
+<div style="min-height: 60%">
 <form method="post" action="avaliacoes.php?acao=alterar">
 
 <input type="hidden" name="id" value="<?= $avaliacao->getId()?>">
@@ -31,3 +32,4 @@
 
 
 </form>
+</div>

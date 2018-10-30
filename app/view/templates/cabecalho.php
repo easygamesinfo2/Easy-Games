@@ -14,12 +14,12 @@
 
 	</head>
 
-	<body style="background-color: #2B2B2B" >
+	<body style="background-color: #2B2B2B; min-height: 20% " >
 
 		<div class="ui top attached tabular inverted menu" style= "height:5.5% ;background-color: #191919; ">
 
 			<div class="ui medium image" style="margin-left: 3%;">
-				<img  src="../view/imagenseg/Easy Gaming.png">
+				<a href="noticias.php"><img  src="../view/imagenseg/Easy Gaming.png"></a>
 			</div>
 
 			<div class="right menu">

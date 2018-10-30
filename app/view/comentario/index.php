@@ -1,4 +1,4 @@
-<div style="margin-left: 20%; margin-right: 20%">
+<div style="margin-left: 20%; margin-right: 20%; min-height: 60%">
 
     <div class="ui one column grid" style="margin-top: 5%; margin-bottom: 5%">
 

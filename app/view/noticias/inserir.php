@@ -1,3 +1,4 @@
+<div style="min-height: 60%">
 <form method="post" action="noticias.php?acao=inserir">
 
 <div style="margin-left: 20%; margin-right: 20%">
@@ -26,3 +27,4 @@
 </div>
 
 </form>
+</div>

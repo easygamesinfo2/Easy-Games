@@ -5,7 +5,7 @@
  * Date: 13/04/18
  * Time: 08:34
  */
-require_once '../modelos/CrudComentario.php.php';
+require_once '../modelos/CrudComentario.php';
 
 if(isset($_GET['acao'])){
     $acao = $_GET['acao'];
@@ -16,7 +16,7 @@ if(isset($_GET['acao'])){
 switch ($acao){
     case 'index':
         $crud = new CrudComentario();
-        $comentario = $crud->getComentario();
+        $comentarios = $crud->getComentarios();
         include "../view/templates/cabecalho.php";
         include "../view/comentario/index.php";
         include "../view/templates/rodape.php";

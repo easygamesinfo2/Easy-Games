@@ -1,3 +1,4 @@
+<div style="min-height: 60%">
 <form method="post" action="comentarios.php?acao=inserir">
 
     <div style="margin-left: 20%; margin-right: 20%">
@@ -7,8 +8,6 @@
             <div class="field grey">
 
                 <h1 style="color: white;">Criar Comentário</h1>
-
-                <input type="text" name="descricao" id="descricao" placeholder="Adicione um nome">
 
             </div>
         </div>
@@ -26,3 +25,4 @@
     </div>
 
 </form>
+</div>

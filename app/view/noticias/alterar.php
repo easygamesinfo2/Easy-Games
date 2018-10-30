@@ -1,3 +1,4 @@
+<div style="min-height: 60%">
 <form method="post" action="noticias.php?acao=alterar">
 
 <input type="hidden" name="id" value="<?= $noticia->getId()?>">
@@ -31,3 +32,4 @@
 
 
 </form>
+</div>
