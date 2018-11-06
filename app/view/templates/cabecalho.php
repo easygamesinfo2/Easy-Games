@@ -22,7 +22,7 @@
 				<a href="noticias.php"><img  src="../view/imagenseg/Easy Gaming.png"></a>
 			</div>
 
-			<div class="right menu">
+			<div class="center menu" style="margin-left: 10%">
 				<a class="item" href="noticias.php">
 					Noticias
 				</a>
@@ -43,6 +43,13 @@
 			<div class="right menu">
 
 			</div>
+            <div class="item">
+
+                <button class="ui icon button">
+                    <i class="cloud icon"></i>
+                </button>
+
+            </div>
 
 			<div class="item">
 
