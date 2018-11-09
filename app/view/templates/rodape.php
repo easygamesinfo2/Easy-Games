@@ -12,9 +12,9 @@
 
                 <div class="ui inverted link list">
 
-                    <a href="#" class="item">Gabriel Sokacheski</a>
-                    <a href="#" class="item">Athirson Santos</a>
-                    <a href="#" class="item">Carlos Eduardo</a>
+                    <a href="" class="item">Gabriel Sokacheski</a>
+                    <a href="" class="item">Athirson Santos</a>
+                    <a href="" class="item">Carlos Eduardo</a>
 
                 </div>
 
@@ -26,9 +26,9 @@
 
                 <div class="ui inverted link list">
 
-                    <a href="#" class="item">Pakkun <i class="steam icon"></i></a>
+                    <a href="" target="_blank" class="item">Pakkun <i class="steam icon"></i></a>
                     <a href="#" class="item">TitoMatador <i class="steam icon"></i></a>
-                    <a href="#" class="item">guaxinim456 <i class="steam icon"></i></a>
+                    <a href="https://steamcommunity.com/profiles/76561198279161285/" target="_blank" class="item">guaxinim456 <i class="steam icon"></i></a>
 
                 </div>
 
@@ -40,9 +40,9 @@
 
                 <div class="ui inverted link list">
 
-                    <a href="#" class="item">sokachevski <i class="instagram icon"></i></i></a>
-                    <a href="#" class="item">athirsonantos <i class="instagram icon"></i></a>
-                    <a href="#" class="item">carlosduardo <i class="instagram icon"></i></a>
+                    <a href="https://www.instagram.com/sokachevski/"    target="_blank" class="item">sokachevski   <i class="instagram icon"></i></i></a>
+                    <a href="https://www.instagram.com/athirsonsantos/" target="_blank" class="item">athirsonantos <i class="instagram icon"></i></a>
+                    <a href="https://www.instagram.com/carlosedudrosa/" target="_blank" class="item">carlosduardo  <i class="instagram icon"></i></a>
 
                 </div>
 
