@@ -1,4 +1,4 @@
-<div class="ui inverted vertical footer segment" style= "background-color: #191919; ">
+<div class="ui inverted vertical footer segment" style= "background-color: #191919; min-height: 20%">
 
     <div class="ui inverted section divider"></div>
 
@@ -58,7 +58,7 @@
 
             <h4 class="ui inverted header">Suporte</h4>
 
-            <p>Desenvolvido por alunos do Instituto Federal Catarinense campus Araquari</p>
+            <p>Desenvolvido por alunos do Instituto Federal Catarinense Campus Araquari</p>
 
         </div>
 

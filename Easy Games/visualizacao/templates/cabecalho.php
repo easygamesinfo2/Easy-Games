@@ -38,25 +38,7 @@
 					Criar avaliação
 				</a>
 				
-				<?php  
 
-				if (!isset($_SESSION['cod_usuario'])) {
-
-				?>
-
-				<a class="item" href="controlador.php?acao=login">
-					Login
-				</a>
-
-				<a class="item" href="controlador.php?acao=cadastrar">
-					Cadastrar
-				</a>
-
-				<?php 
-
-				}
-
-				?>
 
 
 			</div>
@@ -64,7 +46,42 @@
 
 			<div class="right menu">
 
-			</div>
+            </div>
+
+            <div class="item">
+
+                <?php
+
+                if (!isset($_SESSION['cod_usuario'])) {
+
+                    ?>
+                    <a  href="controlador.php?acao=login"><i class="sign in icon"></i>Login</a>
+
+                    <?php
+
+                }
+
+                ?>
+
+
+            </div>
+            <div class="item">
+
+                <?php
+
+                if (!isset($_SESSION['cod_usuario'])) {
+
+                    ?>
+                    <a  href="controlador.php?acao=cadastrar"><i class="edit outline icon"></i>Cadastrar</a>
+
+                    <?php
+
+                }
+
+                ?>
+
+
+            </div>
             <div class="item">
 
                 <?php 
@@ -72,9 +89,7 @@
                 if (isset($_SESSION['cod_usuario'])) {
 			   ?>
 
-                <button class="ui icon button" onclick="javascript: location.href='controlador.php?acao=perfil';">
-                    <i class="user outline icon"></i>
-                </button>
+                    <a  href="controlador.php?acao=perfil"><i class="user outline icon"></i>Perfil</a>
 
                 <?php
 
@@ -93,9 +108,8 @@
                 if (isset($_SESSION['cod_usuario'])) {
 			   ?>
 
-                <button class="ui icon button" onclick="javascript: location.href='controlador.php?acao=logout';">
-                    <i class="logout icon"></i>
-                </button>
+
+                    <a  href="controlador.php?acao=logout"><i class="logout icon"></i>Logout</a>
 
                 <?php
 
