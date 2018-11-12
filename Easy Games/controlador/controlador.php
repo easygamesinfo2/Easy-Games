@@ -46,25 +46,24 @@
 				require_once '../modelos/crud_usuario.php';
 				require_once '../modelos/DBconection.php';
 				$nome  = $_POST['nome' ];
-				$tipo  = $_POST['tipo' ];
 				$email = $_POST['email'];
 				$senha = $_POST['senha'];
 				$confm = $_POST['confirma'];
+				$tipo  = 0;
 				switch ($tipo) {
-					case 'Admin':
-						$tipo_usuario = 1;
-						break;
 					case 'Comum':
-						$tipo_usuario = 2;
+						$tipo_usuario = 0;
 						break;
-					
+				
 					default:
-						$tipo_usuario = 2;
+						$tipo_usuario = 0;
 						break;
 				}
-				$novo_usuario = new usuario($nome, $email, $senha, $tipo_usuario);
+				$novo_usuario = new usuario($nome, $email, $senha, $tipo);
 				$crud = new crud_usuario();
 				$crud->insert_usuario($novo_usuario);
+				echo  "<script>alert('Cadastro efetuado com sucesso');</script>";
+				echo  "<script>location.href='controlador.php?acao=login';</script>";
 			}
 			break;
 		case 'login':
@@ -89,8 +88,8 @@
 					header('location: controlador.php');
 				}
 				else{						
-						echo  "<script>alert('Dados incorretas');</script>";
-						echo  "<script>location.href='controlador.php?acao=login';</script>"; 
+					echo  "<script>alert('Dados incorretas');</script>";
+					echo  "<script>location.href='controlador.php?acao=login';</script>"; 
 					}
 			}
 			break;
