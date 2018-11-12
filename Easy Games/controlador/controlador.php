@@ -85,8 +85,17 @@
 					$_SESSION['tipo_usuario']  = $usuario['tipo_usuario'];
 					$_SESSION['email_usuario'] = $usuario['email_usuario'];
 					$_SESSION['senha_usuario'] = $usuario['senha_usuario'];
+					//$usuario['tipo_usuario']   = 0;
 					header('location: controlador.php');
-				}
+				}//elseif ($usuario) {
+					//$_SESSION['cod_usuario']   = $usuario['cod_usuario'];
+					//$_SESSION['nome_usuario']  = $usuario['nome_usuario'];
+					//$_SESSION['tipo_usuario']  = $usuario['tipo_usuario'];
+					//$_SESSION['email_usuario'] = $usuario['email_usuario'];
+					//$_SESSION['senha_usuario'] = $usuario['senha_usuario'];
+					//$usuario['tipo_usuario']   = 1;
+					//header('location: controlador.php');
+				//}
 				else{						
 					echo  "<script>alert('Dados incorretas');</script>";
 					echo  "<script>location.href='controlador.php?acao=login';</script>"; 
