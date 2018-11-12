@@ -45,10 +45,11 @@
 			else{
 				require_once '../modelos/crud_usuario.php';
 				require_once '../modelos/DBconection.php';
-				$nome = $_POST['nome'];
-				$tipo = $_POST['tipo'];
+				$nome  = $_POST['nome' ];
+				$tipo  = $_POST['tipo' ];
 				$email = $_POST['email'];
 				$senha = $_POST['senha'];
+				$confm = $_POST['confirma'];
 				switch ($tipo) {
 					case 'Admin':
 						$tipo_usuario = 1;
@@ -80,15 +81,16 @@
 				$crud = new crud_usuario();
 				$usuario = $crud->login($email,$senha);
 				if ($usuario) {
-					$_SESSION['cod_usuario'] = $usuario['cod_usuario'];
-					$_SESSION['nome_usuario'] = $usuario['nome_usuario'];
-					$_SESSION['tipo_usuario'] = $usuario['tipo_usuario'];
+					$_SESSION['cod_usuario']   = $usuario['cod_usuario'];
+					$_SESSION['nome_usuario']  = $usuario['nome_usuario'];
+					$_SESSION['tipo_usuario']  = $usuario['tipo_usuario'];
 					$_SESSION['email_usuario'] = $usuario['email_usuario'];
 					$_SESSION['senha_usuario'] = $usuario['senha_usuario'];
 					header('location: controlador.php');
 				}
-				else{
-						echo "dados incorretos";
+				else{						
+						echo  "<script>alert('Dados incorretas');</script>";
+						echo  "<script>location.href='controlador.php?acao=login';</script>"; 
 					}
 			}
 			break;
