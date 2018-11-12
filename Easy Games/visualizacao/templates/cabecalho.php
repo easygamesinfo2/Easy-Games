@@ -37,12 +37,27 @@
 				<a class="item" href="controlador.php?acao=inserir_avaliacao">
 					Criar avaliação
 				</a>
+				
+				<?php  
+
+				if (!isset($_SESSION['cod_usuario'])) {
+
+				?>
+
 				<a class="item" href="controlador.php?acao=login">
 					Login
 				</a>
+
 				<a class="item" href="controlador.php?acao=cadastrar">
 					Cadastrar
 				</a>
+
+				<?php 
+
+				}
+
+				?>
+
 
 			</div>
 
@@ -52,9 +67,41 @@
 			</div>
             <div class="item">
 
-                <button class="ui icon button">
-                    <i class="cloud icon"></i>
+                <?php 
+
+                if (isset($_SESSION['cod_usuario'])) {
+			   ?>
+
+                <button class="ui icon button" onclick="javascript: location.href='controlador.php?acao=perfil';">
+                    <i class="user outline icon"></i>
                 </button>
+
+                <?php
+
+                }
+
+                ?>
+
+
+
+
+            </div>
+            <div class="item">
+
+            	<?php 
+
+                if (isset($_SESSION['cod_usuario'])) {
+			   ?>
+
+                <button class="ui icon button" onclick="javascript: location.href='controlador.php?acao=logout';">
+                    <i class="logout icon"></i>
+                </button>
+
+                <?php
+
+                }
+
+                ?>
 
             </div>
 

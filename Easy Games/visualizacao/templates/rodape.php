@@ -12,9 +12,9 @@
 
                 <div class="ui inverted link list">
 
-                    <a href="" class="item">Gabriel Sokacheski</a>
-                    <a href="" class="item">Athirson Santos</a>
-                    <a href="" class="item">Carlos Eduardo</a>
+                    <a href="" target="_blank" class="item">Gabriel <i class="github icon"></i></a>
+                    <a href="" target="_blank" class="item">Athirson <i class="github icon"></i></a>
+                    <a href="" target="_blank" class="item">Carlos <i class="github icon"></i></a>
 
                 </div>
 
@@ -22,12 +22,12 @@
 
             <div class="three wide column">
 
-                <h4 class="ui inverted header">Steam</h4>
+                <h4 class="ui inverted header">Gamertags</h4>
 
                 <div class="ui inverted link list">
 
-                    <a href="" target="_blank" class="item">Pakkun <i class="steam icon"></i></a>
-                    <a href="#" class="item">TitoMatador <i class="steam icon"></i></a>
+                    <a href="https://my.playstation.com/profile/Soka_Gamer" target="_blank" class="item">Pakkun <i class="playstation icon"></i></a>
+                    <a href="https://account.xbox.com/pt-br/Profile?activetab=main:maintab2" target="_blank" class="item">TitoMatador <i class="xbox icon"></i></a>
                     <a href="https://steamcommunity.com/profiles/76561198279161285/" target="_blank" class="item">guaxinim456 <i class="steam icon"></i></a>
 
                 </div>
