@@ -30,13 +30,7 @@
                         <i class="user icon"></i>
                         <input type="text" name="nome" id="nome" placeholder="nome" required="">
                     </div>
-                </div>
-                <div class="field">
-                    <div class="ui left icon input">
-                        <i class="user icon"></i>
-                        <input type="text" name="tipo" id="tipo" placeholder="tipo" required="">
-                    </div>
-                </div>
+                </div>               
                 <div class="field">
                     <div class="ui left icon input">
                         <i class="mail icon"></i>
