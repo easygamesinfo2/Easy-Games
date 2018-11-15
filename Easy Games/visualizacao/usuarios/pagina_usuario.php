@@ -26,34 +26,28 @@
         <form name="signup" method="post" class="ui large form">
             <div class="ui stacked segment">
                 <div class="field">
-                    <div class="ui left icon input">
-                        <i class="user icon"></i>
-                        <input type="text" name="nome" id="nome" placeholder="nome" required="">
-                    </div>
+                    <h1>Usuario: <?= $_SESSION['nome_usuario']?></h1>
                 </div>
                 <div class="field">
-                    <div class="ui left icon input">
-                        <i class="mail icon"></i>
-                        <input type="email" name="email" id="email" placeholder="email" required="">
-                    </div>
+                    
+
                 </div>
                 <div class="field">
-                    <div class="ui left icon input">
-                        <i class="lock icon"></i>
-                        <input type="password" name="senha" id="senha" placeholder="senha" required="">
-                    </div>
+                    
+
                 </div>
                 <div class="field">
-                    <div class="ui left icon input">
-                        <i class="lock icon"></i>
-                        <input type="password" name="confirma" id="confirma" placeholder="confirma" required="">
-                    </div>
+
                 </div>
-                <div>
-                    <button type="submit"  value="editar" name="editar" id="editar" class="ui inverted fluid large submit button" style="background-color: #191919">Editar</button>
-                </div>
+                <a class="item" href="../controlador/controlador.php?acao=alterar_usuario"><i class="edit outline icon"></i>Alterar
+                
+                </a>
+                 <a class="item" href="../controlador/controlador.php?acao=excluir_usuario"><i class="edit outline icon"></i>Excluir
+                
+                </a>
                 
             </div>
+            
 
             <div class="ui error message"></div>
 

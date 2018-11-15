@@ -89,7 +89,7 @@
                 if (isset($_SESSION['cod_usuario'])) {
 			   ?>
 
-                    <a  href="controlador.php?acao=perfil"><i class="user outline icon"></i>Perfil</a>
+                    <a  href="controlador.php?acao=pagina_usuario&cod_usuario=<?=$_SESSION['cod_usuario']?>"><i class="user icon"></i>Perfil</a>
 
                 <?php
 
@@ -109,7 +109,7 @@
 			   ?>
 
 
-                    <a  href="controlador.php?acao=logout"><i class="logout icon"></i>Logout</a>
+                    <a  href="controlador.php?acao=logout"><i class="user outline icon"></i>Logout</a>
 
                 <?php
 

@@ -11,6 +11,14 @@
             
             return $usuarios;
         }
+        public function get_usuario($cod_usuario){
+            $this->conexao=DBconnection::getConexao();
+            $sql = "SELECT * FROM usuarios where cod_usuario = $cod_usuario";
+            $resultado = $this->conexao->query($sql);
+            $usuario = $resultado->fetch(PDO::FETCH_ASSOC);
+
+        return $usuario;
+        }
         public function insert_usuario(usuario $use){
             $this->conexao=DBconnection::getConexao();
             $dados[] = $use->getNome();
@@ -25,7 +33,7 @@
             $dados[] = $use->getNome();
             $dados[] = $use->getEmail();
             $dados[] = $use->getSenha();
-            $sql = "update usuarios set nome = '$dados[0]',email = '$dados[1]',senha = '$dados[2]' where cod_usuario = $id";
+            $sql = "update usuarios set nome_usuario = '$dados[1]',email_usuario = '$dados[2]',senha_usuario = '$dados[3]' where cod_usuario = $id";
             $this->conexao->exec($sql);
         }
         public function excluir_usuario(int $id){

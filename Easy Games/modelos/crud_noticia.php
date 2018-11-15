@@ -5,11 +5,13 @@ require 'DBconection.php';
 
 class crud_noticia
 {
-    private $conexao;
+
+    public function __construct(){
+        $this->conexao = DBConnection::getConexao();
+    }
 
     public function get_noticias()
     {
-        $this->conexao = DBConnection::getConexao();
 
         $sql = 'select * from noticia';
 
@@ -29,7 +31,7 @@ class crud_noticia
 
     public function get_noticia( int $id)
     {
-        $this->conexao = DBConnection::getConexao();
+
         $sql = "select * from noticia WHERE cod_noticia = $id";
 
         $resultado = $this->conexao->query($sql);
@@ -41,7 +43,7 @@ class crud_noticia
         return $lista_noticias;
     }
     public function insert_noticia(noticia $not){
-        $this->conexao = DBConnection::getConexao();
+
         $dados[] = $not->getTitulo();
         $dados[] = $not->getDescricao();
         $dados[] = $not->getId();
@@ -49,14 +51,14 @@ class crud_noticia
 
     }
     public function atualiza_noticia(noticia $not,int $id){
-        $this->conexao = DBConnection::getConexao();
+
         $dados[] = $not->getTitulo();
         $dados[] = $not->getDescricao();
         $sql = "UPDATE noticia SET titulo_noticia = '$dados[0]',descricao_noticia = '$dados[1]'WHERE cod_noticia = $id";
         $this->conexao->exec($sql);
     }
     public function excluir_noticia( int $id){
-        $this->conexao = DBConnection::getConexao();
+
         $sql ="delete from noticia WHERE cod_noticia = $id";
         $this->conexao->exec($sql);
 
