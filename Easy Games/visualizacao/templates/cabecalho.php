@@ -23,7 +23,7 @@
 			</div>
 
 			<div class="center menu" style="margin-left: 10%">
-				<a class="item" href="controlador.php?acao=exibir_noticia">
+				<a class="item" href="controlador.php?acao=exibir_noticias">
 					Noticias
 				</a>
                 <a class="item" href="controlador.php?acao=inserir_noticia" >

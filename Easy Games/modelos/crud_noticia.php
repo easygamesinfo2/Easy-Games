@@ -46,8 +46,11 @@ class crud_noticia
 
         $dados[] = $not->getTitulo();
         $dados[] = $not->getDescricao();
+        $dados[] = $not->getData();
+        $dados[] = $not->getStatus();
+        $dados[] = $not->getQtd();
         $dados[] = $not->getId();
-        $this->conexao->exec("insert into noticia(titulo_noticia,descricao_noticia) VALUES('$dados[0]','$dados[1]')");
+        $this->conexao->exec("insert into noticia(titulo_noticia,descricao_noticia,data_noticia,status,qtd) VALUES('$dados[0]','$dados[1]','$dados[2]','$dados[3]','$dados[4]')");
 
     }
     public function atualiza_noticia(noticia $not,int $id){

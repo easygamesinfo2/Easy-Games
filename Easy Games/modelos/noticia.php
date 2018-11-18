@@ -2,23 +2,29 @@
 
 class noticia
 {
-    private $id;
+    private $data;
     private $titulo;
     private $descricao;
+    private $id;
+    private $status;
+    private $qtd;
 
-    public function __construct($titulo = null,$descricao = null,$id = null)
+    public function __construct($titulo = null,$descricao = null,$id = null,$status = null,$qtd = null,$data = null)
     {
-        $this->id = $id;
+        $this->data = $data;
         $this->titulo = $titulo;
         $this->descricao = $descricao;
-
-
+        $this->id = $id;
+        $this->status = $status;
+        $this->qtd = $qtd;
     }
 
-    public function getId()
+     public function getData()
     {
-        return $this->id;
+        return $this->data;
     }
+
+    
 
     public function getTitulo()
     {
@@ -28,6 +34,21 @@ class noticia
     public function getDescricao()
     {
         return $this->descricao;
+    }
+
+   public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    public function getQtd()
+    {
+        return $this->qtd;
     }
 
 

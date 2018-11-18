@@ -6,15 +6,15 @@
 
 <div class="ui  segment" style=";background-color: #191919">
 
-<h1 style="color: white"><?= $noticia->getTitulo()?></h1>
+<h1 style="color: white"><?=$noticia->getTitulo();?></h1>
 
-<p style="color: white"><?= $noticia->getDescricao()?> </p>
+<p style="color: white"><?=$noticia->getDescricao();?> </p>
 
 <div class="column" style="margin-top: 5%">
 
-<a href="noticias.php?acao=alterar&id=<?= $noticia->getId()?>"><button class="ui grey button" style="color: black">Editar</button></a>
+<a href="controlador.php?acao=alterar_noticia&id_noticia=<?= $noticia->getId()?>"><button class="ui grey button" style="color: black">Editar</button></a>
 
-<a href="noticias.php?acao=excluir&id=<?= $noticia->getId()?>"><button class="ui grey button" style="color: black">Excluir</button></a>
+<a href="controlador.php?acao=excluir_noticia&id_noticia=<?= $noticia->getId()?>"><button class="ui grey button" style="color: black">Excluir</button></a>
 
 </div>
 

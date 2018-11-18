@@ -86,7 +86,7 @@
 					$_SESSION['tipo_usuario'] = $usuario['tipo_usuario'];
 					$_SESSION['email_usuario'] = $usuario['email_usuario'];
 					$_SESSION['senha_usuario'] = $usuario['senha_usuario'];
-					header('location: controlador.php');
+					header('location: controlador.php?acao=exibir_noticias');
 				}
 				else{
 						echo "dados incorretos";
@@ -121,13 +121,16 @@
 					header('location: controlador.php');
 				}
 				break;
-			case 'alterar_usuario':
-				require_once '../modelos/crud_usuario.php';
-			require_once '../modelos/DBconection.php';
-			include '../visualizacao/templates/cabecalho.php';
-			include '../visualizacao/usuarios/perfil.php';
-			include '../visualizacao/templates/rodape.php';
+		case 'alterar_usuario':
+			if (!isset($_POST['editar'])) {
+					include '../visualizacao/templates/cabecalho.php';
+					include '../visualizacao/usuarios/perfil.php';
+					include '../visualizacao/templates/rodape.php';
+				}
+			
 				if (isset($_POST['editar'])) {
+					require_once '../modelos/crud_usuario.php';
+					require_once '../modelos/DBconection.php';
 					$cod_usuario = $_SESSION['cod_usuario'];
 					$nome = $_POST['nome'];
 					$email = $_POST['email'];
@@ -135,9 +138,10 @@
 					$crud = new crud_usuario();
 					$novo_usuario = new usuario($nome, $email, $senha);
 					$crud->atualiza_usuario($novo_usuario,$cod_usuario);
+					header('location: controlador.php');					
 				}
 				break;
-			case 'excluir_usuario':
+		case 'excluir_usuario':
 					require_once '../modelos/crud_usuario.php';
 					require_once '../modelos/DBconection.php';
 					$cod_usuario = $_SESSION['cod_usuario'];
@@ -146,6 +150,67 @@
 					session_destroy();
 					header('location: controlador.php');
 				break;
+		case 'inserir_noticia':
+				if (!isset($_POST['inserir'])) { // se ainda nao tiver preenchido o form
+            		include '../visualizacao/templates/cabecalho.php';
+					include '../visualizacao/noticias/inserir.php';
+					include '../visualizacao/templates/rodape.php';
+        		}else{
+					require_once '../modelos/crud_noticia.php';
+					require_once '../modelos/DBconection.php';
+        			$titulo = $_POST['titulo'];
+        			$descricao = $_POST['descricao'];
+        			$data = gmdate("Y-m-d");
+        			$status = 1;
+        			$qtd = 0;
+      				$nova_noticia = new noticia($titulo,$descricao,$data,$status,$qtd);
+      				$crud = new crud_noticia();
+      				$crud->insert_noticia($nova_noticia);
+      				header('location: controlador.php?acao=exibir_noticias');
+        		} 
+				break;
+		case 'exibir_noticias':
+				require_once '../modelos/crud_noticia.php';
+				require_once '../modelos/DBconection.php';
+				$crud = new crud_noticia;
+				$noticias = $crud->get_noticias();
+				include '../visualizacao/templates/cabecalho.php';
+				include '../visualizacao/noticias/index.php';
+				include '../visualizacao/templates/rodape.php';
+				break;
+		case 'exibir_noticia':
+				require_once '../modelos/crud_noticia.php';
+				require_once '../modelos/DBconection.php';
+				$id_noticia = $_GET['id_noticia'];
+        		$crud = new crud_noticia();
+        		$noticia = $crud->get_noticia($id_noticia);
+				include '../visualizacao/templates/cabecalho.php';
+				include '../visualizacao/noticias/exibir.php';
+				include '../visualizacao/templates/rodape.php';
+				break;
+		case 'alterar_noticia':
+				if (!isset($_POST['gravar_noticia'])) { // se ainda nao tiver preenchido o form
+            		include '../visualizacao/templates/cabecalho.php';
+					include '../visualizacao/noticias/alterar.php';
+					include '../visualizacao/templates/rodape.php';
+        		}
+				else{
+					require_once '../modelos/crud_noticia.php';
+					require_once '../modelos/DBconection.php';
+					$id_noticia = $_GET['id_noticia'];
+					$titulo = $_POST['titulo'];
+        			$descricao = $_POST['descricao'];
+        			$data = gmdate("Y-m-d");
+        			$status = 1;
+        			$qtd = 0;
+      				$nova_noticia = new noticia($titulo,$descricao,$data,$status,$qtd);
+      				$crud = new crud_noticia();
+      				$crud->atualiza_noticia($nova_noticia, $id_noticia);
+      				header('location: controlador.php?acao=exibir_noticias');
+				}
+				break;
+				
+
 	}
 
 

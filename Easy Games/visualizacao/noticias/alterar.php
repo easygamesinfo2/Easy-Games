@@ -1,7 +1,7 @@
 <div style="min-height: 60%">
-<form method="post" action="noticias.php?acao=alterar">
+<form method="post">
 
-<input type="hidden" name="id" value="<?= $noticia->getId()?>">
+<input type="hidden" name="id">
 
 <div style="margin-left: 20%; margin-right: 20%">
 
@@ -11,7 +11,7 @@
 
             <h1 style="color: white;">Editar notícia</h1>
 
-<input type="text" name="titulo" id="titulo" value="<?=$noticia->getTitulo()?>">
+<input type="text" name="titulo" id="titulo" placeholder="Inserir titulo">
 
 </div>
 </div>
@@ -21,9 +21,9 @@
 
 <div class="field grey">
 
-<textarea name="descricao" id="descricao" cols="30" rows="3" class="ckeditor"><?=$noticia->getDescricao()?></textarea>
+<textarea name="descricao" id="descricao" placeholder="Inserir descrição" cols="30" rows="3" class="ckeditor"></textarea>
 
-<button type="submit" name="gravar" value="Gravar" class="ui  grey button" style="margin-top: 2%; color: black">Enviar</button>
+<button type="submit" name="gravar_noticia" value="gravar_noticia" class="ui  grey button" style="margin-top: 2%; color: black">Enviar</button>
 
 </div>
 </div>

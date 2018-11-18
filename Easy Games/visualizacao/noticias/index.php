@@ -7,7 +7,7 @@
 		<div class="column">
 			<div class="ui  segment" style=";background-color: #191919">
 
-        <h1><a style="color: white" href="noticias.php?acao=exibir&id=<?=$noticia->getId()?>"><?=$noticia->getTitulo();?></a></h1>
+        <h1><a style="color: white" href="controlador.php?acao=exibir_noticia&id_noticia=<?=$noticia->getId();?>"><?=$noticia->getTitulo();?></a></h1>
 
 			</div>
 		</div>
