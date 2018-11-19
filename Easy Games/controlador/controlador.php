@@ -31,16 +31,10 @@
 	}
 
 	switch ($acao) {
-		case 'index':
-			include '../visualizacao/templates/cabecalho.php';
-			include '../visualizacao/index.php';
-			include '../visualizacao/templates/rodape.php';
-			break;
+
 		case 'cadastrar':
 			if (!isset($_POST['cadastrar'])) {
-				include '../visualizacao/templates/cabecalho.php';
 				include '../visualizacao/usuarios/index.php';
-				include '../visualizacao/templates/rodape.php';
 			}
 			else{
 				require_once '../modelos/crud_usuario.php';
@@ -64,14 +58,15 @@
 				$novo_usuario = new usuario($nome, $email, $senha, $tipo_usuario);
 				$crud = new crud_usuario();
 				$crud->insert_usuario($novo_usuario);
+                header('location: controlador.php?acao=login');
 			}
-			header('location: controlador.php');
+
 			break;
 		case 'login':
 			if (!isset($_POST['entrar'])) {
-				include '../visualizacao/templates/cabecalho.php';
+
 				include '../visualizacao/usuarios/login.php';
-				include '../visualizacao/templates/rodape.php';
+
 			}
 			else{
 				require_once '../modelos/crud_usuario.php';
@@ -86,13 +81,12 @@
 					$_SESSION['tipo_usuario'] = $usuario['tipo_usuario'];
 					$_SESSION['email_usuario'] = $usuario['email_usuario'];
 					$_SESSION['senha_usuario'] = $usuario['senha_usuario'];
-					header('location: controlador.php?acao=exibir_noticias');
+					header('location: controlador.php?acao=index');
 				}
 				else{
 						echo "dados incorretos";
 					}
 			}
-			header('location: controlador.php');
 			break;
 		case 'logout':
 			session_destroy();
@@ -166,10 +160,10 @@
       				$nova_noticia = new noticia($titulo,$descricao,$data,$status,$qtd);
       				$crud = new crud_noticia();
       				$crud->insert_noticia($nova_noticia);
-      				header('location: controlador.php?acao=exibir_noticias');
+      				header('location: controlador.php?acao=index');
         		} 
 				break;
-		case 'exibir_noticias':
+		case 'index':
 				require_once '../modelos/crud_noticia.php';
 				require_once '../modelos/DBconection.php';
 				$crud = new crud_noticia;
@@ -206,7 +200,7 @@
       				$nova_noticia = new noticia($titulo,$descricao,$data,$status,$qtd);
       				$crud = new crud_noticia();
       				$crud->atualiza_noticia($nova_noticia, $id_noticia);
-      				header('location: controlador.php?acao=exibir_noticias');
+      				header('location: controlador.php?acao=index');
 				}
 				break;
 				

@@ -6,7 +6,7 @@
 
     <meta charset="utf-8">
 
-    <link rel="stylesheet" type="text/css" href="../templates/semantic/semantic.css">
+    <link rel="stylesheet" type="text/css" href="../visualizacao/templates/semantic/semantic.css">
 
 
 </head>
@@ -16,7 +16,7 @@
     <div class="column">
         <h2 class="ui inverted image header">
             <div class="content">
-                <img src="../imagenseg/Easy Gaming.png">
+                <img src="../visualizacao/imagenseg/Easy Gaming.png">
             </div>
         </h2>
 
@@ -50,7 +50,7 @@
                 <div class="ui message">
                     <div class="field">
                         <div class="ui right icon input">
-                            <a href="index.php">Cadastre-se</a>
+                            <a style="color: black" href="controlador.php?acao=cadastrar">Cadastre-se</a>
                         </div>
                     </div>
                 </div>

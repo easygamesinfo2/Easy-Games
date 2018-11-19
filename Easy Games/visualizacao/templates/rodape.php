@@ -1,4 +1,4 @@
-<div class="ui inverted vertical footer segment" style= "background-color: #191919; min-height: 20%">
+<div class="ui inverted vertical footer segment" style= "background-color: teal; min-height: 20%">
 
     <div class="ui inverted section divider"></div>
 

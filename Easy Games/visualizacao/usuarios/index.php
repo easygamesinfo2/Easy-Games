@@ -6,7 +6,8 @@
 
     <meta charset="utf-8">
 
-    <link rel="stylesheet" type="text/css" href="../templates/semantic/semantic.css">
+    <link rel="stylesheet" type="text/css" href="../visualizacao/templates/semantic/semantic.css">
+
 
 
 </head>
@@ -19,7 +20,7 @@
 
         <h2 class="ui inverted image header">
             <div class="content">
-                <img src="../imagenseg/Easy Gaming.png">
+                <img src="../visualizacao/imagenseg/Easy Gaming.png">
             </div>
         </h2>
 

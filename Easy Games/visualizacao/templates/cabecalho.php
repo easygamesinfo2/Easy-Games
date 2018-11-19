@@ -14,30 +14,83 @@
 
 	</head>
 
-	<body style="background-color: #2B2B2B; min-height: 20% " >
+	<body style="background-color: #2B2B2B; min-height: 20%;" >
 
-		<div class="ui top attached tabular inverted menu" style= "height:10% ;background-color: #191919; ">
+		<div class="ui top attached tabular inverted menu" style= "height:6% ;background-color: teal; ">
 
-			<div class="ui medium image" style="margin-left: 3% ">
-				<a href="noticias.php"><img  src="../view/imagenseg/Easy Gaming.png"></a>
+			<div class="ui small image" style="margin-left: 3% ">
+				<a href="controlador.php"><img  src="../visualizacao/imagenseg/Easy Gaming.png"></a>
+
 			</div>
 
-			<div class="center menu" style="margin-left: 10%">
-				<a class="item" href="controlador.php?acao=exibir_noticias">
-					Noticias
-				</a>
-                <a class="item" href="controlador.php?acao=inserir_noticia" >
-                    Criar notícia
+			<div class="right menu" style="margin-left: 10%">
+
+                <?php
+                if (isset($_SESSION['cod_usuario'])) {
+
+                ?>
+                <a class="item" href="controlador.php?acao=index">
+                    Noticias
                 </a>
 
-				<a class="item" href="controlador.php?acao=exibir_avaliacao">
-					Avaliações
-				</a>
+                <?php
 
-				<a class="item" href="controlador.php?acao=inserir_avaliacao">
-					Criar avaliação
-				</a>
-				
+                }
+
+                ?>
+
+
+
+
+                <?php
+
+                if (isset($_SESSION['tipo_usuario'])==1) {
+
+                    ?>
+                    <a class="item" href="controlador.php?acao=inserir_noticia" >
+                        Criar notícia
+                    </a>
+
+                    <?php
+
+                }
+
+                ?>
+
+                <?php
+
+                if (isset($_SESSION['cod_usuario'])) {
+
+                    ?>
+                    <a class="item" href="controlador.php?acao=exibir_avaliacao">
+                        Avaliações
+                    </a>
+
+                    <?php
+
+                }
+
+                ?>
+
+
+
+                <?php
+
+                if (isset($_SESSION['tipo_usuario'])==1) {
+
+                    ?>
+                    <a class="item" href="controlador.php?acao=inserir_avaliacao">
+                        Criar avaliação
+                    </a>
+
+                    <?php
+
+                }
+
+                ?>
+
+
+
 
 
 
