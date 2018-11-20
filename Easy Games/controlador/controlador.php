@@ -93,9 +93,7 @@
 			header('location: controlador.php');
 			break;
 		case 'pagina_usuario':
-			include '../visualizacao/templates/cabecalho.php';
 			include '../visualizacao/usuarios/pagina_usuario.php';
-			include '../visualizacao/templates/rodape.php';
 			require_once '../modelos/crud_usuario.php';
 			require_once '../modelos/DBconection.php';
 				if (isset($_POST['editar'])) {
@@ -146,6 +144,11 @@
 				break;
 		case 'inserir_noticia':
 				if (!isset($_POST['inserir'])) { // se ainda nao tiver preenchido o form
+            		
+					if($_SESSION['cod_usuario']==2) {
+            			header('location: controlador.php?acao=index');
+        			}
+
             		include '../visualizacao/templates/cabecalho.php';
 					include '../visualizacao/noticias/inserir.php';
 					include '../visualizacao/templates/rodape.php';
@@ -187,6 +190,11 @@
             		include '../visualizacao/templates/cabecalho.php';
 					include '../visualizacao/noticias/alterar.php';
 					include '../visualizacao/templates/rodape.php';
+					//require_once '../modelos/crud_noticia.php';
+					//require_once '../modelos/DBconection.php';
+					//$crud = new crud_noticia();
+					//$id_noticia = $_GET['id_noticia'];
+					//$noticia = $crud->get_noticia($id_noticia);
         		}
 				else{
 					require_once '../modelos/crud_noticia.php';
@@ -200,6 +208,7 @@
       				$nova_noticia = new noticia($titulo,$descricao,$data,$status,$qtd);
       				$crud = new crud_noticia();
       				$crud->atualiza_noticia($nova_noticia, $id_noticia);
+      				
       				header('location: controlador.php?acao=index');
 				}
 				break;
@@ -233,6 +242,11 @@
 			break;
 		case 'inserir_avaliacao':
 			if (!isset($_POST['inserir_avaliacao'])) { 
+            		
+            		if($_SESSION['cod_usuario']==2) {
+            			header('location: controlador.php?acao=exibir_avaliacoes');
+        			}
+
             		include '../visualizacao/templates/cabecalho.php';
 					include '../visualizacao/avaliacoes/inserir.php';
 					include '../visualizacao/templates/rodape.php';

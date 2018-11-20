@@ -11,7 +11,7 @@
 
             <h1 style="color: white;">Editar notícia</h1>
 
-<input type="text" name="titulo" id="titulo" placeholder="Inserir titulo">
+<input type="text" name="titulo" id="titulo" placeholder="Inserir um título">
 
 </div>
 </div>
@@ -21,7 +21,7 @@
 
 <div class="field grey">
 
-<textarea name="descricao" id="descricao" placeholder="Inserir descrição" cols="30" rows="3" class="ckeditor"></textarea>
+<textarea name="descricao" id="descricao" placeholder="Inserir uma descrição" cols="30" rows="3" class="ckeditor"></textarea>
 
 <button type="submit" name="gravar_noticia" value="gravar_noticia" class="ui  grey button" style="margin-top: 2%; color: black">Enviar</button>
 

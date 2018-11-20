@@ -6,7 +6,7 @@
 
     <meta charset="utf-8">
 
-    <link rel="stylesheet" type="text/css" href="../templates/semantic/semantic.css">
+    <link rel="stylesheet" type="text/css" href="../visualizacao/templates/semantic/semantic.css">
 
 
 </head>
@@ -26,7 +26,7 @@
         <form name="signup" method="post" class="ui large form">
             <div class="ui stacked segment">
                 <div class="field">
-                    <h1>Usuario: <?= $_SESSION['nome_usuario']?></h1>
+                    <h1><i class="user icon"></i> <?= $_SESSION['nome_usuario']?></h1>
                 </div>
                 <div class="field">
                     
@@ -39,14 +39,17 @@
                 <div class="field">
 
                 </div>
-                <a class="item" href="../controlador/controlador.php?acao=alterar_usuario"><i class="edit outline icon"></i>Alterar
+                <button class="ui button" style="background: #2B2B2B"><a style="color: white" class="item" href="../controlador/controlador.php?acao=alterar_usuario"><i class="edit outline icon"></i>Alterar
                 
-                </a>
-                 <a class="item" href="../controlador/controlador.php?acao=excluir_usuario"><i class="edit outline icon"></i>Excluir
+                </a></button>
+                 <button class="ui button" style="background: #2B2B2B"><a style="color: white" class="item" href="../controlador/controlador.php?acao=excluir_usuario"><i class="edit outline icon"></i>Excluir
                 
-                </a>
-                
+                </a></button>
+                  <div style="margin-top: 2%; ">
+                <button class="ui button" style="background: #2B2B2B; color: white; width: 56%"><i class="reply icon" ><a href="../controlador/controlador.php" style="color: white"></i>Voltar</a></button>
             </div>
+            </div>
+          
             
 
             <div class="ui error message"></div>
@@ -59,7 +62,7 @@
 
 <style type="text/css">
     body {
-        background-color: #191919;
+        background-color: #2B2B2B;
     }
     body > .grid {
         height: 100%;
