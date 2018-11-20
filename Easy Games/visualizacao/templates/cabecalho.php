@@ -44,7 +44,10 @@
 
                 <?php
 
-                if (isset($_SESSION['tipo_usuario'])==1) {
+                if (isset($_SESSION['cod_usuario'])) { 
+                
+
+                if ($_SESSION['tipo_usuario']==1) {
 
                     ?>
                     <a class="item" href="controlador.php?acao=inserir_noticia" >
@@ -53,16 +56,17 @@
 
                     <?php
 
-                }
+                }}
 
                 ?>
 
                 <?php
 
+
                 if (isset($_SESSION['cod_usuario'])) {
 
                     ?>
-                    <a class="item" href="controlador.php?acao=exibir_avaliacao">
+                    <a class="item" href="controlador.php?acao=exibir_avaliacoes">
                         Avaliações
                     </a>
 
@@ -76,7 +80,8 @@
 
                 <?php
 
-                if (isset($_SESSION['tipo_usuario'])==1) {
+                if (isset($_SESSION['cod_usuario'])) { 
+                if ($_SESSION['tipo_usuario']==1) {
 
                     ?>
                     <a class="item" href="controlador.php?acao=inserir_avaliacao">
@@ -85,7 +90,7 @@
 
                     <?php
 
-                }
+                }}
 
                 ?>
 

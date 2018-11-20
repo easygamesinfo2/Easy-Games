@@ -19,7 +19,7 @@
 
         <h2 class="ui inverted image header">
             <div class="content">
-                <img src="../imagenseg/Easy Gaming.png">
+                <img src="../visualizacao/imagenseg/Easy Gaming.png">
             </div>
         </h2>
 

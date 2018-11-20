@@ -203,7 +203,77 @@
       				header('location: controlador.php?acao=index');
 				}
 				break;
-				
+		case 'excluir_noticia':
+					require_once '../modelos/crud_noticia.php';
+					require_once '../modelos/DBconection.php';
+					$id_noticia = $_GET['id_noticia'];
+					$crud = new crud_noticia();
+					$crud->excluir_noticia($id_noticia);
+					header('location: controlador.php?acao=index');
+				break;
+		case 'exibir_avaliacoes':
+				require_once '../modelos/crud_avaliacao.php';
+				require_once '../modelos/DBconection.php';
+				$crud = new crud_avaliacao;
+				$avaliacoes = $crud->get_avaliacoes();
+				include '../visualizacao/templates/cabecalho.php';
+				include '../visualizacao/avaliacoes/index.php';
+				include '../visualizacao/templates/rodape.php';
+				break;
+			break;
+		case 'exibir_avaliacao':
+				require_once '../modelos/crud_avaliacao.php';
+				require_once '../modelos/DBconection.php';
+				$id_avaliacao = $_GET['id_avaliacao'];
+        		$crud = new crud_avaliacao();
+        		$avaliacao = $crud->get_avaliacao($id_avaliacao);
+				include '../visualizacao/templates/cabecalho.php';
+				include '../visualizacao/avaliacoes/exibir.php';
+				include '../visualizacao/templates/rodape.php';
+			break;
+		case 'inserir_avaliacao':
+			if (!isset($_POST['inserir_avaliacao'])) { 
+            		include '../visualizacao/templates/cabecalho.php';
+					include '../visualizacao/avaliacoes/inserir.php';
+					include '../visualizacao/templates/rodape.php';
+        		}else{
+					require_once '../modelos/crud_avaliacao.php';
+					require_once '../modelos/DBconection.php';
+        			$nome = $_POST['nome'];
+        			$descricao = $_POST['descricao'];
+      				$nova_avaliacao = new avaliacao($nome,$descricao);
+      				$crud = new crud_avaliacao();
+      				$crud->insert_avaliacao($nova_avaliacao);
+      				header('location: controlador.php?acao=exibir_avaliacoes');
+        		} 
+			break;
+
+		case 'alterar_avaliacao':
+				if (!isset($_POST['gravar_avaliacao'])) { // se ainda nao tiver preenchido o form
+            		include '../visualizacao/templates/cabecalho.php';
+					include '../visualizacao/avaliacoes/alterar.php';
+					include '../visualizacao/templates/rodape.php';
+        		}
+				else{
+					require_once '../modelos/crud_avaliacao.php';
+					require_once '../modelos/DBconection.php';
+					$id_avaliacao = $_GET['id_avaliacao'];
+					$nome = $_POST['nome'];
+        			$descricao = $_POST['descricao'];
+      				$nova_avaliacao = new avaliacao($nome,$descricao);
+      				$crud = new crud_avaliacao();
+      				$crud->atualiza_avaliacao($nova_avaliacao,$id_avaliacao);
+      				header('location: controlador.php?acao=exibir_avaliacoes');
+				}
+			break;
+		case 'excluir_avaliacao':
+				require_once '../modelos/crud_avaliacao.php';
+				require_once '../modelos/DBconection.php';
+				$id_avaliacao = $_GET['id_avaliacao'];
+				$crud = new crud_avaliacao();
+				$crud->excluir_avaliacao($id_avaliacao);
+				header('location: controlador.php?acao=exibir_avaliacoes');
+			break;
 
 	}
 

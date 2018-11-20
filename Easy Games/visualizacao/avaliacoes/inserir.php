@@ -1,5 +1,5 @@
 <div style="min-height: 60%">
-<form method="post" action="avaliacoes.php?acao=inserir">
+<form method="post">
 
 <div style="margin-left: 20%; margin-right: 20%">
 
@@ -20,7 +20,7 @@
 
 <textarea name="descricao" id="descricao" cols="30" rows="3" class="ckeditor" placeholder="Adicione uma descrição"></textarea>
 
-<button type="submit" name="inserir" value="Inserir" class="ui  grey button" style="margin-top: 2%; color: black">Enviar</button>
+<button type="submit" name="inserir_avaliacao" value="inserir_avaliacao" class="ui  grey button" style="margin-top: 2%; color: black">Enviar</button>
 
 </div>
 </div>

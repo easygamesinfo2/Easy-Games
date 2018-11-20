@@ -6,15 +6,15 @@
 
 <div class="ui  segment" style="background-color: #191919">
 
-<h1 style="color: white"><?= $avaliacao->getNome()?></h1>
+<h1 style="color: white"><?=$avaliacao->getNome();?></h1>
 
-<p style="color: white"><?= $avaliacao->getDescricao()?> </p>
+<p style="color: white"><?=$avaliacao->getDescricao();?> </p>
 
 <div class="column" style="margin-top: 5%">
 
-<a href="avaliacoes.php?acao=alterar&id=<?= $avaliacao->getId()?>"><button class="ui grey button" style="color: black ">Editar</button></a>
+<a href="controlador.php?acao=alterar_avaliacao&id_avaliacao=<?= $avaliacao->getId()?>"><button class="ui grey button" style="color: black ">Editar</button></a>
 
-<a href="avaliacoes.php?acao=excluir&id=<?= $avaliacao->getId()?>"><button class="ui grey button" style="color: black">Excluir</button></a>
+<a href="controlador.php?acao=excluir_avaliacao&id_avaliacao=<?= $avaliacao->getId()?>"><button class="ui grey button" style="color: black">Excluir</button></a>
 
 </div>
 </div>

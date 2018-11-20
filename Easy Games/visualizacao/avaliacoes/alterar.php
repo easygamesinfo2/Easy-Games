@@ -1,7 +1,7 @@
 <div style="min-height: 60%">
-<form method="post" action="avaliacoes.php?acao=alterar">
+<form method="post">
 
-<input type="hidden" name="id" value="<?= $avaliacao->getId()?>">
+<input type="hidden" name="id">
 
 <div style="margin-left: 20%; margin-right: 20%">
 
@@ -11,7 +11,7 @@
 
             <h1 style="color: white;">Editar avaliação</h1>
 
-<input type="text" name="nome" id="nome" value="<?=$avaliacao->getNome()?>">
+<input type="text" name="nome" id="nome" placeholder="Digite o nome do jogo">
 
 </div>
 </div>
@@ -21,9 +21,9 @@
 
 <div class="field grey">
 
-<textarea name="descricao" id="descricao" cols="30" class="ckeditor" rows="3"><?=$avaliacao->getDescricao()?></textarea>
+<textarea name="descricao" id="descricao" placeholder="Digite a descrição" cols="30" class="ckeditor" rows="3"></textarea>
 
-<button type="submit" name="gravar" value="Gravar" class="ui  grey button" style="margin-top: 2%; color: black">Enviar</button>
+<button type="submit" name="gravar_avaliacao" value="gravar_avaliacao" class="ui  grey button" style="margin-top: 2%; color: black">Enviar</button>
 
 </div>
 </div>

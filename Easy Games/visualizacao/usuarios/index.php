@@ -71,7 +71,7 @@
 
 <style type="text/css">
     body {
-        background-color: #191919;
+        background-color: #2B2B2B;
     }
     body > .grid {
         height: 100%;
