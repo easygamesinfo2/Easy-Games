@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<title>Login ...</title>
+		<script type="text/javascript">
+		</script>
+
+</head>
+<body>
+
+
 <?php 
 
 	if (!isset($_SESSION)) {
@@ -39,26 +50,37 @@
 			else{
 				require_once '../modelos/crud_usuario.php';
 				require_once '../modelos/DBconection.php';
-				$nome = $_POST['nome'];
-				$tipo = $_POST['tipo'];
+				$nome  = $_POST['nome'];
 				$email = $_POST['email'];
 				$senha = $_POST['senha'];
-				switch ($tipo) {
-					case 'Admin':
-						$tipo_usuario = 1;
-						break;
-					case 'Comum':
-						$tipo_usuario = 2;
-						break;
-					
-					default:
-						$tipo_usuario = 2;
-						break;
-				}
-				$novo_usuario = new usuario($nome, $email, $senha, $tipo_usuario);
+				$conf  = $_POST['confirma'];
 				$crud = new crud_usuario();
-				$crud->insert_usuario($novo_usuario);
-                header('location: controlador.php?acao=login');
+				$usuario = $crud->login($email,$senha);
+				if ($usuario) {
+					$email = $usuario['email_usuario'];
+					?>					
+					<script>alert('Email já cadastrado')</script>;
+					<script>location.href='controlador.php?acao=cadastrar'</script> ;
+					<?php
+				}
+				elseif ($senha != $conf) {
+					?>					
+					<script>alert('Senhas diferentes')</script>;
+					<script>location.href='controlador.php?acao=cadastrar'</script>; 
+					<?php
+
+				}else{
+					$novo_usuario = new usuario($nome, $email, $senha, 1);
+					$crud = new crud_usuario();
+					$crud->insert_usuario($novo_usuario);
+                	?>
+					<script>alert('cadastrado com sucesso')</script>
+					<script>location.href='controlador.php?acao=login'</script>
+					<?php
+                	
+				}
+						
+						
 			}
 
 			break;
@@ -83,8 +105,10 @@
 					$_SESSION['senha_usuario'] = $usuario['senha_usuario'];
 					header('location: controlador.php?acao=index');
 				}
-				else{
-						echo "dados incorretos";
+				else{  ?>
+					<script>alert('Dados incorretos')</script>
+					<script>location.href='controlador.php?acao=login'</script>
+					<?php
 					}
 			}
 			break;
@@ -294,3 +318,6 @@
 
 
  ?>
+
+</body>
+</html>
