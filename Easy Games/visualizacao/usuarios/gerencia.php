@@ -8,14 +8,14 @@
 			</div>
 		</div>
 
-<?php foreach ($noticias as $noticia): ?>
+<?php foreach ($usuarios as $usuario): ?>
 
-		<div class="column">
+		<div class=" four wide column">
 			<div class="ui  segment" style=";background-color: white">
 
-        <h1 style="color: black"><?=$usuario->getNome();?></h1>
-        <p style="color: black"><?=$usuario->getEmail();?></p>
-        <a href="controlador.php?acao=excluir_noticia&id_noticia=<?= $noticia->getId()?>"><button class="ui grey button" style="color: black">Excluir</button></a>
+        <h1 style="color: black">Nome</h1>
+        <p style="color: black">Email</p>
+        <button class="ui button" style="background: #2B2B2B"><a style="color: white" class="item" href=""><i class="edit outline icon"></i>Excluir
 			</div>
 		</div>
 
