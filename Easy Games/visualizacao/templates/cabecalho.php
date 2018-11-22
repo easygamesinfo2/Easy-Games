@@ -16,14 +16,14 @@
 
 	<body style="background-color: #2B2B2B; min-height: 20%;" >
 
-		<div class="ui fixed top attached tabular inverted menu" style= "height:6% ;background-color: teal; ">
+		<div class="ui fixed top attached tabular inverted menu" style= "height:9% ;background-color: teal; ">
 
 			<div class="ui small image" style="margin-left: 3% ">
 				<a href="controlador.php"><img  src="../visualizacao/imagenseg/Easy Gaming.png"></a>
 
 			</div>
 
-			<div class="right menu" style="margin-left: 10%">
+			<div class="center menu" style="margin-left: 10%">
 
                 <?php
                 if (isset($_SESSION['cod_usuario'])) {
@@ -138,6 +138,22 @@
 
                 ?>
 
+                <?php
+
+                if (isset($_SESSION['cod_usuario'])) { 
+                if ($_SESSION['tipo_usuario']==1) {
+
+                    ?>
+                    <a class="item" href="controlador.php?acao=gerencia">
+                        Gerenciar usuários
+                    </a>
+
+                    <?php
+
+                }}
+
+                ?>
+
 
             </div>
             <div class="item">
@@ -167,7 +183,7 @@
 			   ?>
 
 
-                    <a  href="controlador.php?acao=logout"><i class="user outline icon"></i>Logout</a>
+                    <a  href="controlador.php?acao=logout"><i class="sign out alternate icon"></i>Logout</a>
 
                 <?php
 
