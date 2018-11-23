@@ -166,6 +166,39 @@
 					session_destroy();
 					header('location: controlador.php');
 				break;
+
+		case 'gerencia':
+				require_once '../modelos/crud_usuario.php';
+				require_once '../modelos/DBconection.php';
+				$cod_usuario = $_SESSION['cod_usuario'];
+				$crud = new crud_usuario;
+				$usuarios = $crud->get_usuarios();
+        		$usuario = $crud->get_usuario($cod_usuario);
+				include '../visualizacao/templates/cabecalho.php';
+				include '../visualizacao/usuarios/gerencia.php';
+				include '../visualizacao/templates/rodape.php';
+				break;
+		case 'excluir_gerencia':
+					require_once '../modelos/crud_usuario.php';
+					require_once '../modelos/DBconection.php';
+					$cod_usuario = $_SESSION['cod_usuario'];
+					$crud = new crud_usuario();
+					$delete = $crud->excluir_usuario($cod_usuario);
+					header('location: controlador.php?acao=gerencia');
+				break;
+		case 'alterar_gerencia':
+					require_once '../modelos/crud_usuario.php';
+					require_once '../modelos/DBconection.php';
+					$cod_usuario = $_SESSION['cod_usuario'];
+					$nome = $_POST['nome'];
+					$email = $_POST['email'];
+					$senha = $_POST['senha'];
+					$crud = new crud_usuario();
+					$novo_usuario = new usuario($nome, $email, $senha);
+					$crud->atualiza_usuario($novo_usuario,$cod_usuario);
+					header('location: controlador.php');					
+				
+				break;
 		case 'inserir_noticia':
 				if (!isset($_POST['inserir'])) { // se ainda nao tiver preenchido o form
             		
