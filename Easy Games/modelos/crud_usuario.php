@@ -2,15 +2,24 @@
     require "usuario.php";
     require 'DBconection.php';
     class crud_usuario{
-        private $conexao;
-        public function get_usuarios(){
-            $this->conexao=DBconnection::getConexao();
-            $sql = 'select * from usuarios';
-            $resultado = $this->conexao->query($sql);
-            $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
-            
-            return $usuarios;
+        public function get_usuarios()
+    {
+        $this->conexao=DBconnection::getConexao();
+        $sql = "SELECT * from usuarios";
+        $resultado = $this->conexao->query($sql);
+        $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
+
+        $lista_usuarios = [];
+
+        foreach ($usuarios as $usuario) {
+            $lista_usuarios[] = new usuario($usuario['nome_usuario'], $usuario['email_usuario'], $usuario['senha_usuario'],$usuario['cod_usuario']);
         }
+
+
+        return $lista_usuarios;
+
+    }
+    
         public function get_usuario($cod_usuario){
             $this->conexao=DBconnection::getConexao();
             $sql = "SELECT * FROM usuarios where cod_usuario = $cod_usuario";
