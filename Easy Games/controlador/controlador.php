@@ -166,39 +166,6 @@
 					session_destroy();
 					header('location: controlador.php');
 				break;
-
-		case 'gerencia':
-				require_once '../modelos/crud_usuario.php';
-				require_once '../modelos/DBconection.php';
-				$cod_usuario = $_SESSION['cod_usuario'];
-				$crud = new crud_usuario;
-				$usuarios = $crud->get_usuarios();
-        		$usuario = $crud->get_usuario($cod_usuario);
-				include '../visualizacao/templates/cabecalho.php';
-				include '../visualizacao/usuarios/gerencia.php';
-				include '../visualizacao/templates/rodape.php';
-				break;
-		case 'excluir_gerencia':
-					require_once '../modelos/crud_usuario.php';
-					require_once '../modelos/DBconection.php';
-					$cod_usuario = $_SESSION['cod_usuario'];
-					$crud = new crud_usuario();
-					$delete = $crud->excluir_usuario($cod_usuario);
-					header('location: controlador.php?acao=gerencia');
-				break;
-		case 'alterar_gerencia':
-					require_once '../modelos/crud_usuario.php';
-					require_once '../modelos/DBconection.php';
-					$cod_usuario = $_SESSION['cod_usuario'];
-					$nome = $_POST['nome'];
-					$email = $_POST['email'];
-					$senha = $_POST['senha'];
-					$crud = new crud_usuario();
-					$novo_usuario = new usuario($nome, $email, $senha);
-					$crud->atualiza_usuario($novo_usuario,$cod_usuario);
-					header('location: controlador.php');					
-				
-				break;
 		case 'inserir_noticia':
 				if (!isset($_POST['inserir'])) { // se ainda nao tiver preenchido o form
             		
@@ -293,6 +260,7 @@
 				$id_avaliacao = $_GET['id_avaliacao'];
         		$crud = new crud_avaliacao();
         		$avaliacao = $crud->get_avaliacao($id_avaliacao);
+        		$num_curtidas = $crud->get_curtidas($id_avaliacao);
 				include '../visualizacao/templates/cabecalho.php';
 				include '../visualizacao/avaliacoes/exibir.php';
 				include '../visualizacao/templates/rodape.php';
@@ -344,6 +312,21 @@
 				$crud = new crud_avaliacao();
 				$crud->excluir_avaliacao($id_avaliacao);
 				header('location: controlador.php?acao=exibir_avaliacoes');
+			break;
+		case 'curtir':
+			require_once '../modelos/crud_avaliacao.php';
+			require_once '../modelos/DBconection.php';
+			$id_avaliacao = $_GET['id_avaliacao'];
+			$id_usuario = $_SESSION['cod_usuario'];
+			$crud = new crud_avaliacao();
+			$verificar_curtida = $crud->verificar_curtida($id_avaliacao,$id_usuario);
+			if($verificar_curtida == 'true'){
+                $nova_curtida = $crud->descurtir($id_avaliacao, $id_usuario);
+            }
+            elseif($verificar_curtida == 'false'){
+                $nova_curtida = $crud->curtir($id_avaliacao, $id_usuario);
+            }
+            header('location: controlador.php?acao=exibir_avaliacao&id_avaliacao='.$id_avaliacao);
 			break;
 
 	}

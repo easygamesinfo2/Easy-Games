@@ -33,10 +33,13 @@
             <br>
             <div class="ui labeled button" tabindex="0" style="margin-top: 3%;">
                 <div class="ui  green button" style="color: white ">
-                    <i class="thumbs up icon" style="color: white"></i> Like
+                    <a href="controlador.php?acao=curtir&id_avaliacao=<?=$avaliacao->getId()?>">                    
+                    <i class="thumbs up icon" style="color: white"></i> 
+                    Like
+                    </a>
                 </div>
                 <a class="ui basic green label">
-                    41
+                    <?=$num_curtidas['numero_curtida'];?>
                 </a>
                 <div class="ui red button" style="margin-left: 2%;color: white">
                     <i class="thumbs down icon" style="color: white "></i> Dislike
