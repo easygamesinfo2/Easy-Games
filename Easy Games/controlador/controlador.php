@@ -244,6 +244,79 @@
 					$crud->excluir_noticia($id_noticia);
 					header('location: controlador.php?acao=index');
 				break;
+		case 'inserir_comentario':
+				if (!isset($_POST['inserir_comentario'])) { // se ainda nao tiver preenchido o form
+            		
+					if($_SESSION['cod_usuario']==2) {
+            			header('location: controlador.php?acao=exibir_comentarios');
+        			}
+
+            		include '../visualizacao/templates/cabecalho.php';
+					include '../visualizacao/comentario/inserir.php';
+					include '../visualizacao/templates/rodape.php';
+        		}else{
+					require_once '../modelos/crud_comentario.php';
+					require_once '../modelos/DBconection.php';
+        			$texto = $_POST['texto'];
+        			$data = gmdate("Y-m-d");
+      				$novo_comentario = new comentario($texto,$data);
+      				$crud = new crud_comentario();
+      				$crud->insert_comentario($novo_comentario);
+      				header('location: controlador.php?acao=exibir_comentarios');
+        		} 
+				break;
+		case 'exibir_comentarios':
+				require_once '../modelos/crud_comentario.php';
+				require_once '../modelos/DBconection.php';
+				$crud = new crud_comentario;
+				$comentarios = $crud->get_comentarios();
+				include '../visualizacao/templates/cabecalho.php';
+				include '../visualizacao/comentario/index.php';
+				include '../visualizacao/templates/rodape.php';
+				break;
+		case 'exibir_comentario':
+				require_once '../modelos/crud_comentario.php';
+				require_once '../modelos/DBconection.php';
+				$id_comentario = $_GET['id_comentario'];
+        		$crud = new crud_comentario();
+        		$comentario = $crud->get_comentario($id_comentario);
+				include '../visualizacao/templates/cabecalho.php';
+				include '../visualizacao/comentario/exibir.php';
+				include '../visualizacao/templates/rodape.php';
+				break;
+		case 'alterar_comentario':
+				if (!isset($_POST['gravar_comentario'])) { // se ainda nao tiver preenchido o form
+            		include '../visualizacao/templates/cabecalho.php';
+					include '../visualizacao/comentario/alterar.php';
+					include '../visualizacao/templates/rodape.php';
+					//require_once '../modelos/crud_noticia.php';
+					//require_once '../modelos/DBconection.php';
+					//$crud = new crud_noticia();
+					//$id_noticia = $_GET['id_noticia'];
+					//$noticia = $crud->get_noticia($id_noticia);
+        		}
+				else{
+					require_once '../modelos/crud_comentario.php';
+					require_once '../modelos/DBconection.php';
+					$id_comentario = $_GET['id_comentario'];
+        			$texto = $_POST['texto'];
+        			$data = gmdate("Y-m-d");
+      				$novo_comentario = new comentario($texto,$data);
+      				$crud = new crud_comentario();
+      				$crud->atualiza_comentario($novo_comentario, $id_comentario);
+      				
+      				header('location: controlador.php?acao=exibir_comentarios');
+				}
+				break;
+		case 'excluir_comentario':
+					require_once '../modelos/crud_comentario.php';
+					require_once '../modelos/DBconection.php';
+					$id_comentario = $_GET['id_comentario'];
+					$crud = new crud_comentario();
+					$crud->excluir_comentario($id_comentario);
+					header('location: controlador.php?acao=exibir_comentarios');
+				break;
+		
 		case 'exibir_avaliacoes':
 				require_once '../modelos/crud_avaliacao.php';
 				require_once '../modelos/DBconection.php';
