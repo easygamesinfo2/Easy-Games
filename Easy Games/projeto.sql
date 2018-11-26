@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
--- http://www.phpmyadmin.net
+-- version 4.8.2
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: 23-Nov-2018 às 14:49
--- Versão do servidor: 5.7.21-0ubuntu0.16.04.1
--- PHP Version: 7.0.22-0ubuntu0.16.04.1
+-- Host: 127.0.0.1
+-- Generation Time: 26-Nov-2018 às 17:28
+-- Versão do servidor: 10.1.34-MariaDB
+-- PHP Version: 7.2.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -31,15 +33,16 @@ CREATE TABLE `avaliacao` (
   `nome_avaliacao` varchar(50) DEFAULT NULL,
   `descricao_avaliacao` text,
   `data_avaliacao` date DEFAULT NULL,
-  `curtidas` varchar(30) DEFAULT NULL
+  `curtidas` varchar(30) DEFAULT NULL,
+  `descurtidas` varchar(30) CHARACTER SET utf8 DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `avaliacao`
 --
 
-INSERT INTO `avaliacao` (`cod_avaliacao`, `nome_avaliacao`, `descricao_avaliacao`, `data_avaliacao`, `curtidas`) VALUES
-(5, 'Read Dead Redemption 2', 'Ã‰ um jogo bom', NULL, '2');
+INSERT INTO `avaliacao` (`cod_avaliacao`, `nome_avaliacao`, `descricao_avaliacao`, `data_avaliacao`, `curtidas`, `descurtidas`) VALUES
+(5, 'Read Dead Redemption 2', 'Ã‰ um jogo bom', NULL, '2', '0');
 
 -- --------------------------------------------------------
 
@@ -90,6 +93,17 @@ INSERT INTO `curtida` (`cod_usuario`, `cod_avaliacao`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `descurtida`
+--
+
+CREATE TABLE `descurtida` (
+  `cod_avaliacao` int(11) DEFAULT NULL,
+  `cod_usuario` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `noticia`
 --
 
@@ -129,7 +143,8 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`cod_usuario`, `senha_usuario`, `email_usuario`, `nome_usuario`, `tipo_usuario`) VALUES
 (1, '123', 'gabriel@gmail.com', 'Gabriel Sokacheski', 1),
-(2, '123', 'athirson@gmail.com', 'Athirson', 1);
+(2, '123', 'athirson@gmail.com', 'Athirson', 1),
+(3, 'senha', 'athirson@a', 'athirson', 1);
 
 --
 -- Indexes for dumped tables
@@ -176,21 +191,25 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `avaliacao`
   MODIFY `cod_avaliacao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `comentario`
 --
 ALTER TABLE `comentario`
   MODIFY `cod_comentario` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `noticia`
 --
 ALTER TABLE `noticia`
   MODIFY `cod_noticia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
 --
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `cod_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `cod_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- Constraints for dumped tables
 --
@@ -202,6 +221,7 @@ ALTER TABLE `cadastrar`
   ADD CONSTRAINT `cadastrar_ibfk_1` FOREIGN KEY (`cod_usuario`) REFERENCES `usuarios` (`cod_usuario`),
   ADD CONSTRAINT `cadastrar_ibfk_2` FOREIGN KEY (`cod_noticia`) REFERENCES `noticia` (`cod_noticia`),
   ADD CONSTRAINT `cadastrar_ibfk_3` FOREIGN KEY (`cod_avaliacao`) REFERENCES `avaliacao` (`cod_avaliacao`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
