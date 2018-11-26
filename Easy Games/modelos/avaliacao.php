@@ -12,13 +12,15 @@ class avaliacao
     private $nome;
     private $descricao;
     private $curtidas;
+    private $descurtidas;
 
-    public function __construct($nome = null,$descricao = null,$id = null,$curtidas = null)
+    public function __construct($nome = null,$descricao = null,$id = null,$curtidas = null, $descurtidas = null)
     {
         $this->id = $id;
         $this->nome = $nome;
         $this->descricao = $descricao;
         $this->curtidas = $curtidas;
+        $this->descurtidas = $descurtidas;
 
 
     }
@@ -42,6 +44,12 @@ class avaliacao
     }
     public function setCurtidas($curtidas){
         return $this->curtidas = $curtidas;
+    }
+    public function getDescurtidas(){
+        return $this->descurtidas;
+    }
+    public function setDescurtidas($descurtidas){
+        return $this->descurtidas = $descurtidas;
     }
 
 
