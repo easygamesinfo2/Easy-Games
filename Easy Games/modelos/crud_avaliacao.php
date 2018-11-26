@@ -125,6 +125,64 @@ class crud_avaliacao
 
 
     }
+    public function descurtida($cod_avaliacao, $cod_usuario){
+        $this->conexao = DBConnection::getConexao();
+        $sql = "update avaliacao set descurtidas = descurtidas+1 where cod_avaliacao = $cod_avaliacao";
+        $atualizar_descurtidas = $this->conexao->exec($sql);
+        
+        if ($atualizar_descurtidas) {
+                $inserir_descurtida = $this->conexao->exec("insert into descurtida (cod_usuario, cod_avaliacao) values ($cod_usuario,$cod_avaliacao)");
+            
+                if ($inserir_descurtida) {
+                    return true;
+                }
+                else{
+                    return false;
+                }
+        }
+    }
+    
+    public function tirar_descurtida($cod_avaliacao,$cod_usuario){
+        $this->conexao = DBConnection::getConexao();
+        $sql = "update avaliacao set descurtidas = descurtidas-1 where cod_avaliacao = $cod_avaliacao";
+        $atualizar_descurtidas = $this->conexao->exec($sql);
+
+         if ($atualizar_descurtidas){
+                $inserir_descurtida = $this->conexao->exec("DELETE FROM descurtida WHERE cod_avaliacao = $cod_avaliacao AND cod_usuario = $cod_usuario");
+            if ($inserir_descurtida) {
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
+    }
+
+    public function get_descurtidas($cod_avaliacao){
+        $this->conexao = DBConnection::getConexao();
+        $sql ="SELECT sum(descurtidas) AS numero_descurtida FROM avaliacao where cod_avaliacao = $cod_avaliacao";
+        $resultado = $this->conexao->query($sql);
+        $descurtidas = $resultado->fetch(PDO::FETCH_ASSOC);
+        return $descurtidas;
+    }
+
+    public function verificar_descurtida($cod_avaliacao, $cod_usuario){
+        $this->conexao = DBConnection::getConexao();
+        $sql ="SELECT cod_usuario, cod_avaliacao from descurtida where cod_usuario= $cod_usuario and cod_avaliacao=$cod_avaliacao";
+        $resultado = $this->conexao->query($sql);
+        $teste = $resultado->fetch(PDO::FETCH_ASSOC);
+        
+
+        if($teste['cod_usuario'] == $cod_usuario AND $teste['cod_avaliacao'] == $cod_avaliacao){
+                return 'true';
+            }else{
+                return 'false';
+            }
+
+
+    }
+
 
 }
 
