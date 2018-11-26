@@ -32,20 +32,22 @@
             <i class="empty star large icon" style="color: yellow"></i>
             <br>
             <div class="ui labeled button" tabindex="0" style="margin-top: 3%;">
-                <div class="ui  green button" style="color: white ">
-                    <a href="controlador.php?acao=curtir&id_avaliacao=<?=$avaliacao->getId()?>">                    
+                <a href="controlador.php?acao=curtir&id_avaliacao=<?=$avaliacao->getId()?>">
+                <div class="ui  green button" style="color: white; height: 5%">                    
+                    <i class="thumbs up icon" style="color: white"></i> 
+                    </a>
+                </div>
+                <a class="ui basic green label" >
+                    <?=$num_curtidas['numero_curtida'];?>
+                </a>
+                <div class="ui red button" style="margin-left: 2%;color: white">
+                <a href="controlador.php?acao=descurtida&id_avaliacao=<?=$avaliacao->getId()?>">                    
                     <i class="thumbs up icon" style="color: white"></i> 
                     Like
                     </a>
                 </div>
                 <a class="ui basic green label">
-                    <?=$num_curtidas['numero_curtida'];?>
-                </a>
-                <div class="ui red button" style="margin-left: 2%;color: white">
-                    <i class="thumbs down icon" style="color: white "></i> Dislike
-                </div>
-                <a class="ui basic red label">
-                    17
+                    <?=$num_descurtidas['numero_descurtida'];?>
                 </a>
             </div>
 
@@ -53,7 +55,7 @@
 
 
         <div class="column">
-            <div class="ui segment" style="background-color: #191919">
+             <div class="ui segment" style="background-color: #191919">
             <h1 style="color: white;margin-top: 2%">Sites com o jogo disponível</h1>
             <div style="margin-bottom: 2%">
                 <i class="world icon" style="color: white"></i>
