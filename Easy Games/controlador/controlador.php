@@ -334,6 +334,7 @@
         		$crud = new crud_avaliacao();
         		$avaliacao = $crud->get_avaliacao($id_avaliacao);
         		$num_curtidas = $crud->get_curtidas($id_avaliacao);
+        		$num_descurtidas = $crud->get_descurtidas($id_avaliacao);
 				include '../visualizacao/templates/cabecalho.php';
 				include '../visualizacao/avaliacoes/exibir.php';
 				include '../visualizacao/templates/rodape.php';
@@ -398,6 +399,21 @@
             }
             elseif($verificar_curtida == 'false'){
                 $nova_curtida = $crud->curtir($id_avaliacao, $id_usuario);
+            }
+            header('location: controlador.php?acao=exibir_avaliacao&id_avaliacao='.$id_avaliacao);
+			break;
+		case 'descurtida':
+			require_once '../modelos/crud_avaliacao.php';
+			require_once '../modelos/DBconection.php';
+			$id_avaliacao = $_GET['id_avaliacao'];
+			$id_usuario = $_SESSION['cod_usuario'];
+			$crud = new crud_avaliacao();
+			$verificar_descurtida = $crud->verificar_descurtida($id_avaliacao,$id_usuario);
+			if($verificar_descurtida == 'true'){
+                $nova_descurtida = $crud->tirar_descurtida($id_avaliacao, $id_usuario);
+            }
+            elseif($verificar_descurtida == 'false'){
+                $nova_descurtida = $crud->descurtida($id_avaliacao, $id_usuario);
             }
             header('location: controlador.php?acao=exibir_avaliacao&id_avaliacao='.$id_avaliacao);
 			break;
