@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 26-Nov-2018 às 17:28
--- Versão do servidor: 10.1.34-MariaDB
--- PHP Version: 7.2.7
+-- Generation Time: 27-Nov-2018 às 02:24
+-- Versão do servidor: 10.1.30-MariaDB
+-- PHP Version: 7.2.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -34,15 +34,16 @@ CREATE TABLE `avaliacao` (
   `descricao_avaliacao` text,
   `data_avaliacao` date DEFAULT NULL,
   `curtidas` varchar(30) DEFAULT NULL,
-  `descurtidas` varchar(30) CHARACTER SET utf8 DEFAULT NULL
+  `descurtidas` varchar(30) CHARACTER SET utf8 DEFAULT NULL,
+  `imagem_avaliacao` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `avaliacao`
 --
 
-INSERT INTO `avaliacao` (`cod_avaliacao`, `nome_avaliacao`, `descricao_avaliacao`, `data_avaliacao`, `curtidas`, `descurtidas`) VALUES
-(5, 'Read Dead Redemption 2', 'Ã‰ um jogo bom', NULL, '2', '0');
+INSERT INTO `avaliacao` (`cod_avaliacao`, `nome_avaliacao`, `descricao_avaliacao`, `data_avaliacao`, `curtidas`, `descurtidas`, `imagem_avaliacao`) VALUES
+(5, 'athirson', '<p>JOGO</p>\r\n', NULL, '3', '0', '<p><img alt=\"\" src=\"https://apollo2.dl.playstation.net/cdn/UP0006/CUSA11600_00/FREE_CONTENTFIy5ADhft4PGF8dAsQOH/PREVIEW_SCREENSHOT2_165862.jpg\" style=\"height:281px; width:500px\" /></p>\r\n');
 
 -- --------------------------------------------------------
 
@@ -88,7 +89,8 @@ INSERT INTO `curtida` (`cod_usuario`, `cod_avaliacao`) VALUES
 (2, 1),
 (1, 2),
 (1, 5),
-(2, 5);
+(2, 5),
+(4, 5);
 
 -- --------------------------------------------------------
 
@@ -144,7 +146,8 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`cod_usuario`, `senha_usuario`, `email_usuario`, `nome_usuario`, `tipo_usuario`) VALUES
 (1, '123', 'gabriel@gmail.com', 'Gabriel Sokacheski', 1),
 (2, '123', 'athirson@gmail.com', 'Athirson', 1),
-(3, 'senha', 'athirson@a', 'athirson', 1);
+(3, 'senha', 'athirson@a', 'athirson', 1),
+(4, 'senha', 'athirson@hotmail.com', 'athirson', 2);
 
 --
 -- Indexes for dumped tables
@@ -208,7 +211,7 @@ ALTER TABLE `noticia`
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `cod_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `cod_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
