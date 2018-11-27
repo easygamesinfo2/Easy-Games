@@ -10,20 +10,20 @@
 
 <p style="color: white"><?=$noticia->getDescricao();?> </p>
 
-<div class="column" style="margin-top: 5%">
-
 <?php
 	if (isset($_SESSION['cod_usuario'])) { 
-        if ($_SESSION['tipo_usuario']==1) {
 			   ?>
+<div class="column" style="margin-top: 5%">
+
+
 
 		<a href="controlador.php?acao=alterar_noticia&id_noticia=<?= $noticia->getId()?>"><button class="ui grey button" style="color: black">Editar</button></a>
 
 		<a href="controlador.php?acao=excluir_noticia&id_noticia=<?= $noticia->getId()?>"><button class="ui grey button" style="color: black">Excluir</button></a>
 
-	<?php }} ?>
+	
 </div>
-
+<?php } ?>
 </div>
 
 </div>

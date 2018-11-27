@@ -23,12 +23,18 @@
                         </form>
 		</div>
 
-<?php foreach ($usuarios as $usuario): ?>
+
 
 		<div class="column">
 			<div class="ui  segment" style=";background-color: white">
 
+        <?php 
+
+        $user = $usuario->getTipo();
+        if(isset($user)){
+         ?>
         <h1 style="color: black"><?=$usuario->getTipo();?></h1>
+        
         <?php
         //tipo = nome 
         //nome = cod
@@ -46,10 +52,19 @@
         <p style="color: black">Tipo: <?=$exibir;?></p>
         <a href="controlador.php?acao=alterar_tipo&cod_usuario=<?=$usuario->getNome()?>&tipo_usuario=<?=$usuario->getId()?>"><button class="ui grey button" style="color: black">Dar Adm</button></a>
         <a href="controlador.php?acao=excluir_usuario_especifico&cod_usuario=<?=$usuario->getNome()?>"><button class="ui grey button" style="color: black">Excluir</button></a>
+        <?php 
+        }else{
+        ?>
+        <h1 style="color: black">Usuario não encontrado</h1>
+        <?php
+        }
+        ?>
+
 			</div>
+
 		</div>
 
-<?php endforeach;?>
+
 
 </div>
 

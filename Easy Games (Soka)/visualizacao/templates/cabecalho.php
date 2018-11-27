@@ -25,19 +25,12 @@
 
 			<div class="center menu" style="margin-left: 10%">
 
-                <?php
-                if (isset($_SESSION['cod_usuario'])) {
-
-                ?>
+                
                 <a class="item" href="controlador.php?acao=index">
                     Noticias
                 </a>
 
-                <?php
-
-                }
-
-                ?>
+                
 
 
 
@@ -60,21 +53,12 @@
 
                 ?>
 
-                <?php
-
-
-                if (isset($_SESSION['cod_usuario'])) {
-
-                    ?>
+                
                     <a class="item" href="controlador.php?acao=exibir_avaliacoes">
                         Avaliações
                     </a>
 
-                    <?php
-
-                }
-
-                ?>
+                
 
 
 
@@ -196,18 +180,18 @@
 			
             <form method="POST" action="../controlador/controlador.php?acao=busca">
 
-            <div class="item">
+                <div class="item">
 
-				<div class="ui transparent icon input">
+				    <div class="ui transparent icon input">
 
-					<input type="text" name="pesquisa" placeholder="Pesquisar...">
+					   <input type="text" name="pesquisa" placeholder="Pesquisar...">
                     
-					<i class="search link icon"></i>
+					   <i class="search link icon"></i>
 
 
-				</div>
+				    </div>
 
-			</div>
+                </div>
 
 
             </form>

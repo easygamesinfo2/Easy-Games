@@ -13,6 +13,12 @@
 
 <p style="color: black"><?=$avaliacao->getDescricao();?> </p>
 
+ <?php
+
+                if (isset($_SESSION['cod_usuario'])) {
+
+                    ?>
+
 <div class="column" style="margin-top: 5%">
 
 <a href="controlador.php?acao=alterar_avaliacao&id_avaliacao=<?= $avaliacao->getId()?>"><button class="ui grey button" style="color: black ">Editar</button></a>
@@ -20,6 +26,7 @@
 <a href="controlador.php?acao=excluir_avaliacao&id_avaliacao=<?= $avaliacao->getId()?>"><button class="ui grey button" style="color: black">Excluir</button></a>
 
 </div>
+<?php } ?>
 </div>
 </div>
 </div>
@@ -73,15 +80,24 @@
             }
             ?>
             <br>
+            
+            <?php
+
+                if (isset($_SESSION['cod_usuario'])) {
+
+                    ?>
+
             <div class="ui labeled button" tabindex="0" style="margin-top: 3%;">
                 <a href="controlador.php?acao=curtir&id_avaliacao=<?=$avaliacao->getId()?>">
                 <div class="ui  green button" style="color: white">                    
                     <i class="thumbs up icon" style="color: white"></i> 
                     </a>
                 </div>
+                
                 <a class="ui basic green label" >
                     <?=$num_curtidas['numero_curtida'];?>
                 </a>
+
                 <div class="ui red button" style="margin-left: 2%;color: white">
                 <a href="controlador.php?acao=descurtida&id_avaliacao=<?=$avaliacao->getId()?>"><i class="thumbs down icon" style="color: white"></i> 
                     </a>
@@ -89,35 +105,15 @@
                 <a class="ui basic green label">
                     <?=$num_descurtidas['numero_descurtida'];?>
                 </a>
+                 <?php }  ?>
             </div>
 
         </div>
 
+   
 
-        <div class="column">
-             <div class="ui segment" style="background-color: #191919">
-            <h1 style="color: white;margin-top: 2%">Sites com o jogo disponível</h1>
-            <div style="margin-bottom: 2%">
-                <i class="world icon" style="color: white"></i>
-                <a href="" style="color: white">example.com.br/jogodesejado</a>
-            </div>
-            <div style="margin-bottom: 2%">
-                <i class="world icon" style="color: white"></i>
-                <a href="" style="color: white">example.com.br/jogodesejado</a>
-            </div>
-            <div style="margin-bottom: 2%">
-                <i class="world icon" style="color: white"></i>
-                <a href="" style="color: white">example.com.br/jogodesejado</a>
-            </div>
-            <div style="margin-bottom: 2%">
-                <i class="world icon" style="color: white"></i>
-                <a href="" style="color: white">example.com.br/jogodesejado</a>
-            </div>
-            <div style="margin-bottom: 2%">
-                <i class="world icon" style="color: white"></i>
-                <a href="" style="color: white">example.com.br/jogodesejado</a>
-            </div>
-        </div>
+
+        
 </div>
 
 </div>
