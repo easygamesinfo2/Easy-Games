@@ -181,7 +181,7 @@
 					require_once '../modelos/DBconection.php';
         			$titulo = $_POST['titulo'];
         			$descricao = $_POST['descricao'];
-        			$imagem = $_POST['imagem'];
+      				$imagem = $_POST['imagem'];
         			$data = gmdate("Y-m-d");
         			$status = 1;
         			$qtd = 0;
@@ -507,10 +507,6 @@
       		include '../visualizacao/avaliacoes/pesquisa_avaliacao.php';
       		include '../visualizacao/templates/rodape.php';
 			break;
-
-	}
-
-	}
 
 	}
 
