@@ -12,6 +12,12 @@
 
 		<script type="text/javascript" src="../visualizacao/templates/ckeditor/ckeditor.js"></script>
 
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+        
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        
+        <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
 	</head>
 
 	<body style="background-color: #2B2B2B; min-height: 20%;" >
@@ -47,7 +53,7 @@
                 if (isset($_SESSION['cod_usuario'])) { 
                 
 
-                if ($_SESSION['tipo_usuario']==1) {
+                if ($_SESSION['tipo_usuario']==2) {
 
                     ?>
                     <a class="item" href="controlador.php?acao=inserir_noticia" >
@@ -81,7 +87,7 @@
                 <?php
 
                 if (isset($_SESSION['cod_usuario'])) { 
-                if ($_SESSION['tipo_usuario']==1) {
+                if ($_SESSION['tipo_usuario']==2) {
 
                     ?>
                     <a class="item" href="controlador.php?acao=inserir_avaliacao">
@@ -141,7 +147,7 @@
                 <?php
 
                 if (isset($_SESSION['cod_usuario'])) { 
-                if ($_SESSION['tipo_usuario']==1) {
+                if ($_SESSION['tipo_usuario']==2) {
 
                     ?>
                     <a class="item" href="controlador.php?acao=gerencia">
@@ -192,18 +198,17 @@
                 ?>
 
             </div>
-
 			<div class="item">
+            <form method="GET" action="../visualizacao/Noticias/consulta.php">
+				<div class="ui transparent icon input" >
 
-				<div class="ui transparent icon input">
-
-					<input type="text" placeholder="Pesquisar...">
-
-					<i class="search link icon"></i>
-
+					<input type="text" id="consulta" name="consulta" placeholder="Pesquisar...">
+                    <input type="submit" value="enviar">
+					<!-- <i class="search link icon" type="submit"></i> -->
+            
 
 				</div>
-
+            </form>
 			</div>
 
 		</div>
@@ -211,3 +216,18 @@
 		<br>
 		<br>
 
+
+<script>
+        $(function() {
+         var esportes = [
+          "Homem Aranha",
+          "Fifa 19",
+          "",
+          "peidopeido",
+          "FINALMENTE! O GAMEPLAY DE RED DEAD REDEMPTION 2"
+         ];
+         $("#consulta" ).autocomplete({
+           source: esportes
+         });
+        });
+</script>
