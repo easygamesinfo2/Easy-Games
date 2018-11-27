@@ -70,7 +70,7 @@
 					<?php
 
 				}else{
-					$novo_usuario = new usuario($nome, $email, $senha, 1);
+					$novo_usuario = new usuario($nome, $email, $senha, 2);
 					$crud = new crud_usuario();
 					$crud->insert_usuario($novo_usuario);
                 	?>
@@ -397,12 +397,23 @@
 			$id_usuario = $_SESSION['cod_usuario'];
 			$crud = new crud_avaliacao();
 			$verificar_curtida = $crud->verificar_curtida($id_avaliacao,$id_usuario);
+			$verificar_descurtida = $crud->verificar_descurtida($id_avaliacao,$id_usuario);
+
+			if($verificar_descurtida == 'true'){
+                $nova_descurtida = $crud->tirar_descurtida($id_avaliacao, $id_usuario);
+            }
+
 			if($verificar_curtida == 'true'){
                 $nova_curtida = $crud->descurtir($id_avaliacao, $id_usuario);
             }
+
+
             elseif($verificar_curtida == 'false'){
                 $nova_curtida = $crud->curtir($id_avaliacao, $id_usuario);
             }
+
+
+
             header('location: controlador.php?acao=exibir_avaliacao&id_avaliacao='.$id_avaliacao);
 			break;
 		case 'descurtida':
@@ -412,13 +423,77 @@
 			$id_usuario = $_SESSION['cod_usuario'];
 			$crud = new crud_avaliacao();
 			$verificar_descurtida = $crud->verificar_descurtida($id_avaliacao,$id_usuario);
+			$verificar_curtida = $crud->verificar_curtida($id_avaliacao,$id_usuario);
+
+			if($verificar_curtida == 'true'){
+                $nova_curtida = $crud->descurtir($id_avaliacao, $id_usuario);
+            }
+
 			if($verificar_descurtida == 'true'){
                 $nova_descurtida = $crud->tirar_descurtida($id_avaliacao, $id_usuario);
             }
+
+
             elseif($verificar_descurtida == 'false'){
                 $nova_descurtida = $crud->descurtida($id_avaliacao, $id_usuario);
             }
+
+
+
             header('location: controlador.php?acao=exibir_avaliacao&id_avaliacao='.$id_avaliacao);
+			break;
+		case 'gerencia':
+				require_once '../modelos/crud_usuario.php';
+				require_once '../modelos/DBconection.php';
+				$crud = new crud_usuario;
+				$usuarios = $crud->get_usuarios();
+				include '../visualizacao/templates/cabecalho.php';
+				include '../visualizacao/usuarios/gerencia.php';
+				include '../visualizacao/templates/rodape.php';
+			break;
+		case 'excluir_usuario_especifico':
+				require_once '../modelos/crud_usuario.php';
+				require_once '../modelos/DBconection.php';
+				$cod_usuario = $_GET['cod_usuario'];
+				$usuario_logado = $_SESSION['cod_usuario'];
+				$crud = new crud_usuario();
+				$delete = $crud->excluir_usuario($cod_usuario);
+				if($cod_usuario == $usuario_logado){
+                	session_destroy();
+					header('location: controlador.php');
+					unset($cod_usuario);
+            	}
+				else{
+					header('location: controlador.php?acao=gerencia');
+				}
+			break;
+		case 'alterar_tipo':
+				require_once '../modelos/crud_usuario.php';
+				require_once '../modelos/DBconection.php';
+				$tipo_usuario = $_GET['tipo_usuario'];
+				$cod_usuario = $_GET['cod_usuario'];
+				if($tipo_usuario == 1){
+                	$tipo_usuario_ao_contrario = 2;
+            	}
+            	elseif($tipo_usuario == 2){
+                	$tipo_usuario_ao_contrario = 1;
+            	}
+            	$usuario_logado = $_SESSION['cod_usuario'];
+				$crud = new crud_usuario();
+				$alterando = $crud->tipo_usuario($cod_usuario,$tipo_usuario_ao_contrario);
+				if($cod_usuario == $usuario_logado){
+                	session_destroy();
+					header('location: controlador.php');
+					unset($tipo_usuario);
+					unset($cod_usuario);
+					unset($tipo_usuario_ao_contrario);
+            	}
+				else{
+					header('location: controlador.php?acao=gerencia');
+					unset($tipo_usuario);
+					unset($cod_usuario);
+					unset($tipo_usuario_ao_contrario);
+				}		
 			break;
 
 	}

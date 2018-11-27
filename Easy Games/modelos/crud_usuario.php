@@ -8,8 +8,15 @@
             $sql = 'select * from usuarios';
             $resultado = $this->conexao->query($sql);
             $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
+            $lista_usuarios = [];
+
+        foreach ($usuarios as $usuario) {
+            $lista_usuarios[] = new usuario($usuario['cod_usuario'], $usuario['senha_usuario'],$usuario['email_usuario'],$usuario['nome_usuario'],$usuario['tipo_usuario']);
+        }
+
+
+        return $lista_usuarios;
             
-            return $usuarios;
         }
         public function get_usuario($cod_usuario){
             $this->conexao=DBconnection::getConexao();
@@ -53,5 +60,12 @@
                 return false;
             }
         }
+        public function tipo_usuario($cod_usuario,$tipo_usuario_ao_contrario){
+            $this->conexao = DBconnection::getConexao();
+            $sql = "UPDATE usuarios SET tipo_usuario = '$tipo_usuario_ao_contrario' WHERE cod_usuario = '$cod_usuario'";
+            $this->conexao->exec($sql);
+        }
+        
+
     }
  ?>

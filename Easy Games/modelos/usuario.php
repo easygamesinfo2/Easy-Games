@@ -21,12 +21,13 @@
        private $senha;
        private $tipo_usuario;
 
-       function __construct($nome=null,$email=null,$senha=null,$tipo_usuario=null)
+       function __construct($nome=null,$email=null,$senha=null,$tipo_usuario=null,$id=null)
        {
         $this->nome=$nome;
         $this->email=$email;
         $this->senha=$senha;
         $this->tipo_usuario=$tipo_usuario;
+        $this->id=$id;
 
        }
 
