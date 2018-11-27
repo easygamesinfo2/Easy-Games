@@ -21,7 +21,7 @@ class crud_noticia
         $lista_noticias = [];
 
         foreach ($noticias as $noticia) {
-            $lista_noticias[] = new noticia($noticia['titulo_noticia'], $noticia['descricao_noticia'],$noticia['cod_noticia']);
+            $lista_noticias[] = new noticia($noticia['titulo_noticia'], $noticia['descricao_noticia'],$noticia['imagem_noticia'],$noticia['cod_noticia']);
         }
 
 
@@ -37,7 +37,7 @@ class crud_noticia
         $resultado = $this->conexao->query($sql);
         $noticia = $resultado->fetch(PDO::FETCH_ASSOC);
 
-        $lista_noticias = new noticia($noticia['titulo_noticia'], $noticia['descricao_noticia'],$noticia['cod_noticia']);
+        $lista_noticias = new noticia($noticia['titulo_noticia'], $noticia['descricao_noticia'],$noticia['imagem_noticia'],$noticia['cod_noticia']);
 
 
         return $lista_noticias;
@@ -46,18 +46,20 @@ class crud_noticia
 
         $dados[] = $not->getTitulo();
         $dados[] = $not->getDescricao();
+        $dados[] = $not->getImagem();
         $dados[] = $not->getData();
         $dados[] = $not->getStatus();
         $dados[] = $not->getQtd();
         $dados[] = $not->getId();
-        $this->conexao->exec("insert into noticia(titulo_noticia,descricao_noticia,data_noticia,status,qtd) VALUES('$dados[0]','$dados[1]','$dados[2]','$dados[3]','$dados[4]')");
+        $this->conexao->exec("insert into noticia(titulo_noticia,descricao_noticia,imagem_noticia,data_noticia,status,qtd) VALUES('$dados[0]','$dados[1]','$dados[2]','$dados[3]','$dados[4]','$dados[5]')");
 
     }
     public function atualiza_noticia(noticia $not,int $id){
 
         $dados[] = $not->getTitulo();
         $dados[] = $not->getDescricao();
-        $sql = "UPDATE noticia SET titulo_noticia = '$dados[0]',descricao_noticia = '$dados[1]'WHERE cod_noticia = $id";
+        $dados[] = $not->getImagem();
+        $sql = "UPDATE noticia SET titulo_noticia = '$dados[0]',descricao_noticia = '$dados[1]',imagem_noticia = '$dados[2]' WHERE cod_noticia = $id";
         $this->conexao->exec($sql);
     }
     public function excluir_noticia( int $id){
