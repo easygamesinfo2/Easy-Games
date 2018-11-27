@@ -181,10 +181,11 @@
 					require_once '../modelos/DBconection.php';
         			$titulo = $_POST['titulo'];
         			$descricao = $_POST['descricao'];
+        			$imagem = $_POST['imagem'];
         			$data = gmdate("Y-m-d");
         			$status = 1;
         			$qtd = 0;
-      				$nova_noticia = new noticia($titulo,$descricao,$data,$status,$qtd);
+      				$nova_noticia = new noticia($titulo,$descricao,$imagem,$data,$status,$qtd);
       				$crud = new crud_noticia();
       				$crud->insert_noticia($nova_noticia);
       				header('location: controlador.php?acao=index');
@@ -226,10 +227,11 @@
 					$id_noticia = $_GET['id_noticia'];
 					$titulo = $_POST['titulo'];
         			$descricao = $_POST['descricao'];
+        			$imagem = $_POST['imagem'];
         			$data = gmdate("Y-m-d");
         			$status = 1;
         			$qtd = 0;
-      				$nova_noticia = new noticia($titulo,$descricao,$data,$status,$qtd);
+      				$nova_noticia = new noticia($titulo,$descricao,$imagem,$data,$status,$qtd);
       				$crud = new crud_noticia();
       				$crud->atualiza_noticia($nova_noticia, $id_noticia);
       				
@@ -505,6 +507,10 @@
       		include '../visualizacao/avaliacoes/pesquisa_avaliacao.php';
       		include '../visualizacao/templates/rodape.php';
 			break;
+
+	}
+
+	}
 
 	}
 
