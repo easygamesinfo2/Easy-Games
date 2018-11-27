@@ -355,7 +355,8 @@
 					require_once '../modelos/DBconection.php';
         			$nome = $_POST['nome'];
         			$descricao = $_POST['descricao'];
-      				$nova_avaliacao = new avaliacao($nome,$descricao);
+        			$imagem = $_POST['imagem'];
+      				$nova_avaliacao = new avaliacao($nome,$descricao,$imagem);
       				$crud = new crud_avaliacao();
       				$crud->insert_avaliacao($nova_avaliacao);
       				header('location: controlador.php?acao=exibir_avaliacoes');
@@ -374,7 +375,8 @@
 					$id_avaliacao = $_GET['id_avaliacao'];
 					$nome = $_POST['nome'];
         			$descricao = $_POST['descricao'];
-      				$nova_avaliacao = new avaliacao($nome,$descricao);
+        			$imagem = $_POST['imagem'];
+      				$nova_avaliacao = new avaliacao($nome,$descricao,$imagem);
       				$crud = new crud_avaliacao();
       				$crud->atualiza_avaliacao($nova_avaliacao,$id_avaliacao);
       				header('location: controlador.php?acao=exibir_avaliacoes');
