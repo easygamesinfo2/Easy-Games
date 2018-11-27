@@ -16,7 +16,7 @@
 
 	<body style="background-color: #2B2B2B; min-height: 20%;" >
 
-		<div class="ui top fixed attached tabular inverted menu" style= "height:9% ;background-color: teal; ">
+		<div class="ui top fixed attached tabular inverted menu" style= "height:7% ;background-color: teal; ">
 
 			<div class="ui small image" style="margin-left: 3% ">
 				<a href="controlador.php"><img  src="../visualizacao/imagenseg/Easy Gaming.png"></a>
