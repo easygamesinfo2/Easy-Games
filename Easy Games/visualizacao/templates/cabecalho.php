@@ -47,7 +47,7 @@
                 if (isset($_SESSION['cod_usuario'])) { 
                 
 
-                if ($_SESSION['tipo_usuario']==1) {
+                if ($_SESSION['tipo_usuario']==2) {
 
                     ?>
                     <a class="item" href="controlador.php?acao=inserir_noticia" >
@@ -81,7 +81,7 @@
                 <?php
 
                 if (isset($_SESSION['cod_usuario'])) { 
-                if ($_SESSION['tipo_usuario']==1) {
+                if ($_SESSION['tipo_usuario']==2) {
 
                     ?>
                     <a class="item" href="controlador.php?acao=inserir_avaliacao">
@@ -141,7 +141,7 @@
                 <?php
 
                 if (isset($_SESSION['cod_usuario'])) { 
-                if ($_SESSION['tipo_usuario']==1) {
+                if ($_SESSION['tipo_usuario']==2) {
 
                     ?>
                     <a class="item" href="controlador.php?acao=gerencia">
