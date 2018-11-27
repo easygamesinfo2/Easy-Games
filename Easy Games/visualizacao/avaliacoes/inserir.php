@@ -19,7 +19,8 @@
 <div class="field grey">
 
 <textarea name="descricao" id="descricao" cols="30" rows="3" class="ckeditor" placeholder="Adicione uma descrição" style="margin-bottom: 2%"></textarea>
-
+<br>
+<h1 style="color: white">Imagem</h1>
 <textarea name="imagem" id="imagem" cols="30" rows="3" class="ckeditor" placeholder="Adicione a 
 url da imagem" ></textarea>
 

@@ -4,7 +4,7 @@
 
 <div class="column">
 <div class="ui  segment" style="background-color: #191919">
-<p><?=$avaliacao->getImagem();?></p>
+<div><?=$avaliacao->getImagem();?></div>
 </div>
 
 <div class="ui  segment" style="background-color: white">
