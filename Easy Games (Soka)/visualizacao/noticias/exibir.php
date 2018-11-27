@@ -14,7 +14,7 @@
 
 <?php
 	if (isset($_SESSION['cod_usuario'])) { 
-        if ($_SESSION['tipo_usuario']==2) {
+        if ($_SESSION['tipo_usuario']==1) {
 			   ?>
 
 		<a href="controlador.php?acao=alterar_noticia&id_noticia=<?= $noticia->getId()?>"><button class="ui grey button" style="color: black">Editar</button></a>
