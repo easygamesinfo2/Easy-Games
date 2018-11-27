@@ -24,7 +24,7 @@ class crud_avaliacao
         $listaAvaliacoes = [];
 
         foreach ($avaliacoes as $avaliacao) {
-            $listaAvaliacoes[] = new avaliacao($avaliacao['nome_avaliacao'], $avaliacao['descricao_avaliacao'],$avaliacao['cod_avaliacao']);
+            $listaAvaliacoes[] = new avaliacao($avaliacao['nome_avaliacao'], $avaliacao['descricao_avaliacao'],$avaliacao['imagem_avaliacao'],$avaliacao['cod_avaliacao']);
         }
 
 
@@ -40,7 +40,7 @@ class crud_avaliacao
         $resultado = $this->conexao->query($sql);
         $avaliacao = $resultado->fetch(PDO::FETCH_ASSOC);
 
-        $listaAvaliacoes = new avaliacao($avaliacao['nome_avaliacao'], $avaliacao['descricao_avaliacao'],$avaliacao['cod_avaliacao']);
+        $listaAvaliacoes = new avaliacao($avaliacao['nome_avaliacao'], $avaliacao['descricao_avaliacao'],$avaliacao['imagem_avaliacao'],$avaliacao['cod_avaliacao']);
 
 
         return $listaAvaliacoes;
@@ -49,16 +49,19 @@ class crud_avaliacao
         $this->conexao = DBConnection::getConexao();
         $dados[] = $ava->getNome();
         $dados[] = $ava->getDescricao();
+        $dados[] = $ava->getImagem();
         $dados[] = $ava->getId();
         $dados[] = $ava->getCurtidas();
-        $this->conexao->exec("insert into avaliacao(nome_avaliacao,descricao_avaliacao,curtidas) VALUES('$dados[0]','$dados[1]','$dados[2]')");
+        $dados[] = $ava->getDescurtidas();
+        $this->conexao->exec("insert into avaliacao(nome_avaliacao,descricao_avaliacao,imagem_avaliacao,curtidas,descurtidas) VALUES('$dados[0]','$dados[1]','$dados[2]','$dados[3]','$dados[4]')");
 
     }
     public function atualiza_avaliacao(Avaliacao  $ava,int $id){
         $this->conexao = DBConnection::getConexao();
         $dados[] = $ava->getNome();
         $dados[] = $ava->getDescricao();
-        $sql = "UPDATE avaliacao SET nome_avaliacao = '$dados[0]',descricao_avaliacao = '$dados[1]'WHERE cod_avaliacao = $id";
+        $dados[] = $ava->getImagem();
+        $sql = "UPDATE avaliacao SET nome_avaliacao = '$dados[0]',descricao_avaliacao = '$dados[1]',imagem_avaliacao = '$dados[2]' WHERE cod_avaliacao = $id";
         $this->conexao->exec($sql);
     }
     public function excluir_avaliacao( int $ava){
