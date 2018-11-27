@@ -335,6 +335,7 @@
         		$avaliacao = $crud->get_avaliacao($id_avaliacao);
         		$num_curtidas = $crud->get_curtidas($id_avaliacao);
         		$num_descurtidas = $crud->get_descurtidas($id_avaliacao);
+				$nota_jogo = ($num_curtidas['numero_curtida']/$num_descurtidas['numero_descurtida']);
 				include '../visualizacao/templates/cabecalho.php';
 				include '../visualizacao/avaliacoes/exibir.php';
 				include '../visualizacao/templates/rodape.php';
