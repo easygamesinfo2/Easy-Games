@@ -18,7 +18,10 @@
 
 <div class="field grey">
 
-<textarea name="descricao" id="descricao" cols="30" rows="3" class="ckeditor" placeholder="Adicione uma descrição"></textarea>
+<textarea name="descricao" id="descricao" cols="30" rows="3" class="ckeditor" placeholder="Adicione uma descrição" style="margin-bottom: 2%"></textarea>
+
+<textarea name="imagem" id="imagem" cols="30" rows="3" class="ckeditor" placeholder="Adicione a 
+url da imagem" ></textarea>
 
 <button type="submit" name="inserir_avaliacao" value="inserir_avaliacao" class="ui  grey button" style="margin-top: 2%; color: black">Enviar</button>
 

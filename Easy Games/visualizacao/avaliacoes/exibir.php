@@ -3,12 +3,15 @@
 <div class="ui one column grid" style="margin-top: 5%">
 
 <div class="column">
-
 <div class="ui  segment" style="background-color: #191919">
+<p><?=$avaliacao->getImagem();?></p>
+</div>
 
-<h1 style="color: white"><?=$avaliacao->getNome();?></h1>
+<div class="ui  segment" style="background-color: white">
 
-<p style="color: white"><?=$avaliacao->getDescricao();?> </p>
+<h1 style="color: black"><?=$avaliacao->getNome();?></h1>
+
+<p style="color: black"><?=$avaliacao->getDescricao();?> </p>
 
 <div class="column" style="margin-top: 5%">
 
