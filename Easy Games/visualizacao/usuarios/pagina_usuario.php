@@ -27,6 +27,7 @@
             <div class="ui stacked segment">
                 <div class="field">
                     <h1><i class="user icon"></i> <?= $_SESSION['nome_usuario']?></h1>
+                    <p><i class="mail icon"></i> <?= $_SESSION['email_usuario']?></p>
                 </div>
                 <div class="field">
                     
@@ -46,7 +47,7 @@
                 
                 </a></button>
                   <div style="margin-top: 2%; ">
-                <button class="ui button" style="background: #2B2B2B; color: white; width: 56%"><i class="reply icon" ><a href="../controlador/controlador.php" style="color: white"></i>Voltar</a></button>
+                <button class="ui button" style="background: #2B2B2B; color: white; width: 56%"><i class="reply icon" ><a href="../controlador/controlador.php?acao=index" style="color: white"></i>Voltar</a></button>
             </div>
             </div>
           

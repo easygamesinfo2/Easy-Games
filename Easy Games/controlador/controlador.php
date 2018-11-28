@@ -139,9 +139,10 @@
 				break;
 		case 'alterar_usuario':
 			if (!isset($_POST['editar'])) {
-					include '../visualizacao/templates/cabecalho.php';
+					if (!isset($_SESSION['cod_usuario'])) {
+        				header('location: controlador.php?acao=index');
+        			}
 					include '../visualizacao/usuarios/perfil.php';
-					include '../visualizacao/templates/rodape.php';
 				}
 			
 				if (isset($_POST['editar'])) {
@@ -154,10 +155,14 @@
 					$crud = new crud_usuario();
 					$novo_usuario = new usuario($nome, $email, $senha);
 					$crud->atualiza_usuario($novo_usuario,$cod_usuario);
+					session_destroy();
 					header('location: controlador.php');					
 				}
 				break;
 		case 'excluir_usuario':
+					if (!isset($_SESSION['cod_usuario'])) {
+        				header('location: controlador.php?acao=index');
+        			}
 					require_once '../modelos/crud_usuario.php';
 					require_once '../modelos/DBconection.php';
 					$cod_usuario = $_SESSION['cod_usuario'];
@@ -171,6 +176,8 @@
             		
 					if($_SESSION['cod_usuario']==2) {
             			header('location: controlador.php?acao=index');
+        			}elseif (!isset($_SESSION['cod_usuario'])) {
+        				header('location: controlador.php?acao=index');
         			}
 
             		include '../visualizacao/templates/cabecalho.php';
@@ -212,6 +219,11 @@
 				break;
 		case 'alterar_noticia':
 				if (!isset($_POST['gravar_noticia'])) { // se ainda nao tiver preenchido o form
+            		if($_SESSION['cod_usuario']==2) {
+            			header('location: controlador.php?acao=index');
+        			}elseif (!isset($_SESSION['cod_usuario'])) {
+        				header('location: controlador.php?acao=index');
+        			}
             		include '../visualizacao/templates/cabecalho.php';
 					include '../visualizacao/noticias/alterar.php';
 					include '../visualizacao/templates/rodape.php';
@@ -239,6 +251,11 @@
 				}
 				break;
 		case 'excluir_noticia':
+					if($_SESSION['cod_usuario']==2) {
+            			header('location: controlador.php?acao=index');
+        			}elseif (!isset($_SESSION['cod_usuario'])) {
+        				header('location: controlador.php?acao=index');
+        			}
 					require_once '../modelos/crud_noticia.php';
 					require_once '../modelos/DBconection.php';
 					$id_noticia = $_GET['id_noticia'];
@@ -346,7 +363,9 @@
 			if (!isset($_POST['inserir_avaliacao'])) { 
             		
             		if($_SESSION['cod_usuario']==2) {
-            			header('location: controlador.php?acao=exibir_avaliacoes');
+            			header('location: controlador.php?acao=index');
+        			}elseif (!isset($_SESSION['cod_usuario'])) {
+        				header('location: controlador.php?acao=index');
         			}
 
             		include '../visualizacao/templates/cabecalho.php';
@@ -367,6 +386,11 @@
 
 		case 'alterar_avaliacao':
 				if (!isset($_POST['gravar_avaliacao'])) { // se ainda nao tiver preenchido o form
+            		if($_SESSION['cod_usuario']==2) {
+            			header('location: controlador.php?acao=index');
+        			}elseif (!isset($_SESSION['cod_usuario'])) {
+        				header('location: controlador.php?acao=index');
+        			}
             		include '../visualizacao/templates/cabecalho.php';
 					include '../visualizacao/avaliacoes/alterar.php';
 					include '../visualizacao/templates/rodape.php';
@@ -385,6 +409,11 @@
 				}
 			break;
 		case 'excluir_avaliacao':
+				if($_SESSION['cod_usuario']==2) {
+            			header('location: controlador.php?acao=index');
+        			}elseif (!isset($_SESSION['cod_usuario'])) {
+        				header('location: controlador.php?acao=index');
+        			}
 				require_once '../modelos/crud_avaliacao.php';
 				require_once '../modelos/DBconection.php';
 				$id_avaliacao = $_GET['id_avaliacao'];
@@ -393,6 +422,7 @@
 				header('location: controlador.php?acao=exibir_avaliacoes');
 			break;
 		case 'curtir':
+			
 			require_once '../modelos/crud_avaliacao.php';
 			require_once '../modelos/DBconection.php';
 			$id_avaliacao = $_GET['id_avaliacao'];
@@ -507,11 +537,16 @@
       		include '../visualizacao/avaliacoes/pesquisa_avaliacao.php';
       		include '../visualizacao/templates/rodape.php';
 			break;
-
-	}
-
-	}
-
+		case 'busca_usuario':
+			$busca = $_POST['pesquisa'];
+			require_once '../modelos/crud_usuario.php';
+			require_once '../modelos/DBconection.php';
+      		$crud = new crud_usuario();
+      		$usuario = $crud->busca($busca);
+      		include '../visualizacao/templates/cabecalho.php';
+      		include '../visualizacao/usuarios/pesquisa_usuario.php';
+      		include '../visualizacao/templates/rodape.php';
+			break;
 	}
 
 

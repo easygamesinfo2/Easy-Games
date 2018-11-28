@@ -6,7 +6,7 @@
 
     <meta charset="utf-8">
 
-    <link rel="stylesheet" type="text/css" href="../templates/semantic/semantic.css">
+    <link rel="stylesheet" type="text/css" href="../visualizacao/templates/semantic/semantic.css">
 
 
 </head>

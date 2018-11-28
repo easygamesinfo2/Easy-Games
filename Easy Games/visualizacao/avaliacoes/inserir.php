@@ -24,7 +24,7 @@
 <textarea name="imagem" id="imagem" cols="30" rows="3" class="ckeditor" placeholder="Adicione a 
 url da imagem" ></textarea>
 
-<button type="submit" name="inserir_avaliacao" value="inserir_avaliacao" class="ui  grey button" style="margin-top: 2%; color: black">Enviar</button>
+<button type="submit" name="inserir_avaliacao" value="inserir_avaliacao" class="ui  grey button" style="margin-top: 2%; background-color: white ;color: black">Enviar</button>
 
 </div>
 </div>

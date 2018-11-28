@@ -65,6 +65,16 @@
             $sql = "UPDATE usuarios SET tipo_usuario = '$tipo_usuario_ao_contrario' WHERE cod_usuario = '$cod_usuario'";
             $this->conexao->exec($sql);
         }
+        public function busca($busca)
+    {
+        $this->conexao = DBConnection::getConexao();
+        $sql = "SELECT * FROM usuarios WHERE nome_usuario = '$busca'";
+        $resultado = $this->conexao->query($sql);
+        $usuario = $resultado->fetch(PDO::FETCH_ASSOC);
+        $lista_usuarios = new usuario($usuario['cod_usuario'], $usuario['senha_usuario'],$usuario['email_usuario'],$usuario['nome_usuario'],$usuario['tipo_usuario']);
+        return $lista_usuarios;
+        
+    }
         
 
     }

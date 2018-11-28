@@ -4,22 +4,22 @@
 
 <div class="column">
 
-<div class="ui  segment" style=";background-color: #191919">
+<div class="ui  segment" style=";background-color: white">
 
-<h1 style="color: white"><?=$noticia->getTitulo();?></h1>
+<h1 ><?=$noticia->getTitulo();?></h1>
 
-<p style="color: white"><?=$noticia->getDescricao();?> </p>
+<p ><?=$noticia->getDescricao();?> </p>
 
 <div class="column" style="margin-top: 5%">
 
 <?php
 	if (isset($_SESSION['cod_usuario'])) { 
-        if ($_SESSION['tipo_usuario']==2) {
+        if ($_SESSION['tipo_usuario']==1) {
 			   ?>
 
-		<a href="controlador.php?acao=alterar_noticia&id_noticia=<?= $noticia->getId()?>"><button class="ui grey button" style="color: black">Editar</button></a>
+		<a href="controlador.php?acao=alterar_noticia&id_noticia=<?= $noticia->getId()?>"><button class="ui grey button" style="background-color: #191919 ;color: white">Editar</button></a>
 
-		<a href="controlador.php?acao=excluir_noticia&id_noticia=<?= $noticia->getId()?>"><button class="ui grey button" style="color: black">Excluir</button></a>
+		<a href="controlador.php?acao=excluir_noticia&id_noticia=<?= $noticia->getId()?>"><button class="ui grey button" style="background-color: #191919 ;color: white">Excluir</button></a>
 
 	<?php }} ?>
 </div>

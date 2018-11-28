@@ -31,6 +31,15 @@ class crud_avaliacao
         return $listaAvaliacoes;
 
     }
+    public function busca($busca)
+    {
+        $this->conexao = DBConnection::getConexao();
+        $sql = "SELECT * FROM avaliacao WHERE nome_avaliacao = '$busca'";
+        $resultado = $this->conexao->query($sql);
+        $avaliacao = $resultado->fetch(PDO::FETCH_ASSOC);
+         $listaAvaliacoes = new avaliacao($avaliacao['nome_avaliacao'], $avaliacao['descricao_avaliacao'],$avaliacao['imagem_avaliacao'],$avaliacao['cod_avaliacao']);
+        return $listaAvaliacoes;
+    }
 
     public function get_avaliacao( int $id)
     {
@@ -185,15 +194,9 @@ class crud_avaliacao
 
 
     }
-    public function busca($busca)
-    {
-        $this->conexao = DBConnection::getConexao();
-        $sql = "SELECT * FROM avaliacao WHERE nome_avaliacao = '$busca'";
-        $resultado = $this->conexao->query($sql);
-        $avaliacao = $resultado->fetch(PDO::FETCH_ASSOC);
-         $listaAvaliacoes = new avaliacao($avaliacao['nome_avaliacao'], $avaliacao['descricao_avaliacao'],$avaliacao['imagem_avaliacao'],$avaliacao['cod_avaliacao']);
-        return $listaAvaliacoes;
-    }
+    
+
+    
 
 
 }

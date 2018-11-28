@@ -3,7 +3,7 @@
 <div class="ui one column grid" style="margin-top: 5%">
 
 <div class="column">
-<div class="ui  segment" style="background-color: #191919">
+<div class="ui  segment" style="background-color: white">
 <div><?=$avaliacao->getImagem();?></div>
 </div>
 
@@ -14,11 +14,16 @@
 <p style="color: black"><?=$avaliacao->getDescricao();?> </p>
 
 <div class="column" style="margin-top: 5%">
+<?php
+    if (isset($_SESSION['cod_usuario'])) { 
+        if ($_SESSION['tipo_usuario']==1) {
+               ?>
 
-<a href="controlador.php?acao=alterar_avaliacao&id_avaliacao=<?= $avaliacao->getId()?>"><button class="ui grey button" style="color: black ">Editar</button></a>
+<a href="controlador.php?acao=alterar_avaliacao&id_avaliacao=<?= $avaliacao->getId()?>"><button class="ui grey button" style="color: white; background-color: #191919 ">Editar</button></a>
 
-<a href="controlador.php?acao=excluir_avaliacao&id_avaliacao=<?= $avaliacao->getId()?>"><button class="ui grey button" style="color: black">Excluir</button></a>
+<a href="controlador.php?acao=excluir_avaliacao&id_avaliacao=<?= $avaliacao->getId()?>"><button class="ui grey button" style="color: white; background-color: #191919 ">Excluir</button></a>
 
+<?php }} ?>
 </div>
 </div>
 </div>
@@ -62,7 +67,7 @@
             <i class="star large icon" style="color: yellow"></i>
             <i class="star outline large icon" style="color: yellow"></i>
             <?php
-            }else{
+            }elseif($nota_jogo > 5){
             ?> 
             <i class="star large icon" style="color: yellow"></i>
             <i class="star large icon" style="color: yellow"></i>
@@ -70,9 +75,21 @@
             <i class="star large icon" style="color: yellow"></i>
             <i class="star large icon" style="color: yellow"></i>
             <?php
+            }elseif($nota_jogo <= 0){
+            ?> 
+            <i class="star outline large icon" style="color: yellow"></i>
+            <i class="star outline large icon" style="color: yellow"></i>
+            <i class="star outline large icon" style="color: yellow"></i>
+            <i class="star outline large icon" style="color: yellow"></i>
+            <i class="star outline large icon" style="color: yellow"></i>
+            <?php
             }
             ?>
             <br>
+            <?php
+    if (isset($_SESSION['cod_usuario'])) { 
+        if ($_SESSION['tipo_usuario']==1) {
+               ?>
             <div class="ui labeled button" tabindex="0" style="margin-top: 3%;">
                 <a href="controlador.php?acao=curtir&id_avaliacao=<?=$avaliacao->getId()?>">
                 <div class="ui  green button" style="color: white">                    
@@ -90,35 +107,11 @@
                     <?=$num_descurtidas['numero_descurtida'];?>
                 </a>
             </div>
+            <?php }} ?>
+
 
         </div>
 
-
-        <div class="column">
-             <div class="ui segment" style="background-color: #191919">
-            <h1 style="color: white;margin-top: 2%">Sites com o jogo disponível</h1>
-            <div style="margin-bottom: 2%">
-                <i class="world icon" style="color: white"></i>
-                <a href="" style="color: white">example.com.br/jogodesejado</a>
-            </div>
-            <div style="margin-bottom: 2%">
-                <i class="world icon" style="color: white"></i>
-                <a href="" style="color: white">example.com.br/jogodesejado</a>
-            </div>
-            <div style="margin-bottom: 2%">
-                <i class="world icon" style="color: white"></i>
-                <a href="" style="color: white">example.com.br/jogodesejado</a>
-            </div>
-            <div style="margin-bottom: 2%">
-                <i class="world icon" style="color: white"></i>
-                <a href="" style="color: white">example.com.br/jogodesejado</a>
-            </div>
-            <div style="margin-bottom: 2%">
-                <i class="world icon" style="color: white"></i>
-                <a href="" style="color: white">example.com.br/jogodesejado</a>
-            </div>
-        </div>
-</div>
 
 </div>
 </div>

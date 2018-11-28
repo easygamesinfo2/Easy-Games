@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 4.8.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 27-Nov-2018 às 02:24
--- Versão do servidor: 10.1.30-MariaDB
--- PHP Version: 7.2.2
+-- Generation Time: 27-Nov-2018 às 22:39
+-- Versão do servidor: 10.1.31-MariaDB
+-- PHP Version: 7.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -32,7 +32,6 @@ CREATE TABLE `avaliacao` (
   `cod_avaliacao` int(11) NOT NULL,
   `nome_avaliacao` varchar(50) DEFAULT NULL,
   `descricao_avaliacao` text,
-  `data_avaliacao` date DEFAULT NULL,
   `curtidas` varchar(30) DEFAULT NULL,
   `descurtidas` varchar(30) CHARACTER SET utf8 DEFAULT NULL,
   `imagem_avaliacao` text
@@ -42,8 +41,10 @@ CREATE TABLE `avaliacao` (
 -- Extraindo dados da tabela `avaliacao`
 --
 
-INSERT INTO `avaliacao` (`cod_avaliacao`, `nome_avaliacao`, `descricao_avaliacao`, `data_avaliacao`, `curtidas`, `descurtidas`, `imagem_avaliacao`) VALUES
-(5, 'athirson', '<p>JOGO</p>\r\n', NULL, '3', '0', '<p><img alt=\"\" src=\"https://apollo2.dl.playstation.net/cdn/UP0006/CUSA11600_00/FREE_CONTENTFIy5ADhft4PGF8dAsQOH/PREVIEW_SCREENSHOT2_165862.jpg\" style=\"height:281px; width:500px\" /></p>\r\n');
+INSERT INTO `avaliacao` (`cod_avaliacao`, `nome_avaliacao`, `descricao_avaliacao`, `curtidas`, `descurtidas`, `imagem_avaliacao`) VALUES
+(8, 'Gabriel Sokacheski', '<p>AFAFAS</p>', '1', '1', ''),
+(9, 'Athirson Santos ', 'ruim', '', '', ''),
+(10, 'sdssefe', 'fsdfs', '1', '0', '');
 
 -- --------------------------------------------------------
 
@@ -88,9 +89,10 @@ INSERT INTO `curtida` (`cod_usuario`, `cod_avaliacao`) VALUES
 (2, 2),
 (2, 1),
 (1, 2),
-(1, 5),
 (2, 5),
-(4, 5);
+(4, 5),
+(10, 8),
+(1, 10);
 
 -- --------------------------------------------------------
 
@@ -103,6 +105,15 @@ CREATE TABLE `descurtida` (
   `cod_usuario` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Extraindo dados da tabela `descurtida`
+--
+
+INSERT INTO `descurtida` (`cod_avaliacao`, `cod_usuario`) VALUES
+(5, 1),
+(5, 5),
+(8, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -111,19 +122,17 @@ CREATE TABLE `descurtida` (
 
 CREATE TABLE `noticia` (
   `cod_noticia` int(11) NOT NULL,
-  `data_noticia` date DEFAULT NULL,
-  `status` tinyint(4) DEFAULT NULL,
   `titulo_noticia` varchar(100) DEFAULT NULL,
-  `qtd` tinyint(4) DEFAULT NULL,
-  `descricao_noticia` text
+  `descricao_noticia` text,
+  `imagem_noticia` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `noticia`
 --
 
-INSERT INTO `noticia` (`cod_noticia`, `data_noticia`, `status`, `titulo_noticia`, `qtd`, `descricao_noticia`) VALUES
-(16, NULL, NULL, 'FINALMENTE! O GAMEPLAY DE RED DEAD REDEMPTION 2', NULL, 'Um imenso mundo para explorar e tambÃ©m sobreviver! Dividido entre tradiÃ§Ãµes antigas e um novo mundo moderno surgindo junto a desertos, florestas densas, montanhas e cidades densas.\r\n\r\nVocÃª poderÃ¡ firmar acampamentos com sua gangue, sua famÃ­lia, podendo comer, beber e jogar. DeverÃ¡ suprir seu acampamento com suprimentos, procurar por tesouros e muito mais!\r\n\r\nNeste novo Red Dead Redemption 2 vocÃª Ã© responsÃ¡vel pelo prÃ³prio destino, seus atos tem consequÃªncias!\r\n\r\nEntre cuidar do seu cavalo ou comprar outro, vocÃª poderÃ¡ adquirir e personalizar suas armas, equipamentos, ajudar a cidade ou se tornar o pior pesadelo do velho oeste.\r\n\r\nRed Dead Redemption 2 chegarÃ¡ dia 26 de outubro de 2018 para PlayStation 4 e Xbox One.');
+INSERT INTO `noticia` (`cod_noticia`, `titulo_noticia`, `descricao_noticia`, `imagem_noticia`) VALUES
+(16, 'FINALMENTE! O GAMEPLAY DE RED DEAD REDEMPTION 2', 'Um imenso mundo para explorar e tambÃ©m sobreviver! Dividido entre tradiÃ§Ãµes antigas e um novo mundo moderno surgindo junto a desertos, florestas densas, montanhas e cidades densas.\r\n\r\nVocÃª poderÃ¡ firmar acampamentos com sua gangue, sua famÃ­lia, podendo comer, beber e jogar. DeverÃ¡ suprir seu acampamento com suprimentos, procurar por tesouros e muito mais!\r\n\r\nNeste novo Red Dead Redemption 2 vocÃª Ã© responsÃ¡vel pelo prÃ³prio destino, seus atos tem consequÃªncias!\r\n\r\nEntre cuidar do seu cavalo ou comprar outro, vocÃª poderÃ¡ adquirir e personalizar suas armas, equipamentos, ajudar a cidade ou se tornar o pior pesadelo do velho oeste.\r\n\r\nRed Dead Redemption 2 chegarÃ¡ dia 26 de outubro de 2018 para PlayStation 4 e Xbox One.', NULL);
 
 -- --------------------------------------------------------
 
@@ -145,9 +154,7 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`cod_usuario`, `senha_usuario`, `email_usuario`, `nome_usuario`, `tipo_usuario`) VALUES
 (1, '123', 'gabriel@gmail.com', 'Gabriel Sokacheski', 1),
-(2, '123', 'athirson@gmail.com', 'Athirson', 1),
-(3, 'senha', 'athirson@a', 'athirson', 1),
-(4, 'senha', 'athirson@hotmail.com', 'athirson', 2);
+(10, '123', 'athirson@gmail.com', 'Athirson Santos', 1);
 
 --
 -- Indexes for dumped tables
@@ -193,7 +200,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `avaliacao`
 --
 ALTER TABLE `avaliacao`
-  MODIFY `cod_avaliacao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `cod_avaliacao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `comentario`
@@ -211,7 +218,7 @@ ALTER TABLE `noticia`
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `cod_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `cod_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables

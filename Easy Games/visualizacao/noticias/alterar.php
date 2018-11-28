@@ -26,7 +26,7 @@
 <h1 style="color: white">Imagem</h1>
 <textarea name="imagem" id="imagem" cols="30" rows="3" class="ckeditor" placeholder="Adicione a 
 url da imagem" ></textarea>
-<button type="submit" name="gravar_noticia" value="gravar_noticia" class="ui  grey button" style="margin-top: 2%; color: black">Enviar</button>
+<button type="submit" name="gravar_noticia" value="gravar_noticia" class="ui  grey button" style="margin-top: 2%; background-color: white;color: black">Enviar</button>
 
 </div>
 </div>
